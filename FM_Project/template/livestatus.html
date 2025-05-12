@@ -1,0 +1,342 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Status</title>
+    <link rel="stylesheet" href="{% static 'css/livestatus.css' %}"/>
+  </head>
+  <body>
+    <div class="titlelayer">
+      <div class="arcalogo logo"><img src="{% static 'image/forbesblue 1.png' %}" alt="" /></div>
+      <div class="titlecontainer">
+        <div class="poligon">Live Status</div>
+        <div class="hmir12status">
+          <div class="hmistatus">
+            <span class=".status"
+              ><img src="{% static 'image/green.png' %}" alt="" /></span
+            ><span>HMI CONNECTION</span>
+          </div>
+          <div class="r12status">
+            <span class=".status"
+              ><img src="{% static 'image/green.png' %}" alt="" /></span
+            ><span>R12 CONNECTION</span>
+          </div>
+        </div>
+      </div>
+      <div class="tesleadlogo logo">
+        <img src="{% static 'image/tesleadlogo.jpg' %}" alt="" />
+      </div>
+    </div>
+    <div class="testmachineinfo">
+      <div class="datatimehomeconfig">
+        <div class="datatime">
+          <span class="icon"><img src="./images/calendar.png" alt="" /></span
+          ><span class="text">Date & Time</span>
+        </div>
+        <div class="home">
+          <span class="icon"><img src="./images/home.png" alt="" /></span
+          ><span class="text">Home</span>
+        </div>
+        <div class="config">
+          <span class="icon"><img src="./images/configicon.png" alt="" /></span
+          ><span class="text">Configuration</span>
+        </div>
+      </div>
+      <div class="serialsize infofield">
+        <div class="info"><span>SERIAL NUMBER</span><span>683511264</span></div>
+        <div class="info">
+          <span>SIZE & CLASS</span><span>65NB (2 1/2") - #150</span>
+        </div>
+      </div>
+      <div class="productmode infofield">
+        <div class="info">
+          <span>MACHINE / HMI MODE</span><span>AUTO / RW</span>
+        </div>
+        <div class="info"><span>PRODUCT</span><span>A106</span></div>
+      </div>
+      <div class="testnameoperator infofield">
+        <div class="info">
+          <span>PERF.TEST NAME</span><span>HYDRO SHELL</span>
+        </div>
+        <div class="info"><span>OPERATOR</span><span>USER</span></div>
+      </div>
+    </div>
+
+    <div class="testanalytics">
+      <div class="item grey">
+        <div class="title">SET PRESSURE</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">BAR G</div>
+        </div>
+      </div>
+      <div class="item grey">
+        <div class="title">SET DURATION</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">SECS</div>
+        </div>
+      </div>
+      <div class="item grey">
+        <div class="title">ACTUAL PRESSURE</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">BAR G</div>
+        </div>
+      </div>
+      <div class="item grey">
+        <div class="title">ACTUAL DURATION</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">SECS</div>
+        </div>
+      </div>
+      <div class="item green">
+        <div class="title">AIR SHELL LEAK ALLOWED</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">pa/sec</div>
+        </div>
+      </div>
+      <div class="item red">
+        <div class="title">AIR SHELL LEAK</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">pa/sec</div>
+        </div>
+      </div>
+      <div class="item green">
+        <div class="title">air seat leak allowed</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">nm<sup>3</sup>/hr</div>
+        </div>
+      </div>
+      <div class="item red">
+        <div class="title">air seat leak</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">nm<sup>3</sup>/hr</div>
+        </div>
+      </div>
+      <div class="item green">
+        <div class="title">hydro shell leak allowed</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">BAR G</div>
+        </div>
+      </div>
+      <div class="item red">
+        <div class="title">hydro shell leak</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">BAR G</div>
+        </div>
+      </div>
+      <div class="item green">
+        <div class="title">hydro seat leak allowed</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">ml/min</div>
+        </div>
+      </div>
+      <div class="item red">
+        <div class="title">hydro seat leak</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">ml/min</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="statusbuttons1">
+      <div class="statusbutton green">cycle start</div>
+      <div class="statusbutton green">prefilling on</div>
+      <div class="statusbutton green">air on</div>
+      <div class="statusbutton green">pressure drain on</div>
+      <div class="statusbutton green">timer on</div>
+      <div class="statusbutton green">booster on</div>
+      <div class="statusbutton green">vacuum on</div>
+      <div class="statusbutton green">emergency stop</div>
+    </div>
+
+    <div class="statusbuttons2">
+      <div class="statusbutton blue">clamping</div>
+      <div class="statusbutton blue">prefilling</div>
+      <div class="statusbutton blue">booster</div>
+      <div class="statusbutton blue">timer on</div>
+      <div class="statusbutton blue">timer off</div>
+      <div class="statusbutton blue">declamping</div>
+      <div class="statusbutton blue">door open</div>
+      <div class="statusbutton blue">door close</div>
+    </div>
+
+    <div class="actionbuttons">
+      <div class="actionbutton blue">air shell</div>
+      <div class="actionbutton blue">air seat</div>
+      <div class="actionbutton blue">hydro shell</div>
+      <div class="actionbutton blue">hydro seat</div>
+      <div class="actionbutton red">cycle complete</div>
+    </div>
+
+    <div class="bottomlayer">
+      <div class="testresult green">
+        <div class="title">
+          <div class="text">air shell test result</div>
+          <img src="{% static 'image/green.png' %}" alt="" />
+        </div>
+        <div class="observation">no leak observed</div>
+      </div>
+      <div class="testresult green">
+        <div class="title">
+          <div class="text">air seat test result</div>
+          <img src="{% static 'image/green.png' %}" alt="" />
+        </div>
+        <div class="observation">no leak observed</div>
+      </div>
+      <div class="testresult green">
+        <div class="title">
+          <div class="text">hydro shell test result</div>
+          <img src="{% static 'image/green.png' %}" alt="" />
+        </div>
+        <div class="observation">no leak observed</div>
+      </div>
+      <div class="testresult green">
+        <div class="title">
+          <div class="text">hydr seat test result</div>
+          <img src="{% static 'image/green.png' %}" alt="" />
+        </div>
+        <div class="observation">no leak observed</div>
+      </div>
+      <div class="alarm">alarm message</div>
+    </div>
+
+    <div class="clampingdetails">
+      <div class="item grey">
+        <div class="title">SET CLAMPING PRESSURE</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">BAR G</div>
+        </div>
+      </div>
+      <div class="item grey">
+        <div class="title">ACTUAL CLAMPING PRESSURE</div>
+        <div class="value">
+          <div class="number">00000</div>
+          <div class="unit">BAR G</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pressurestats">
+      <table>
+        <tr>
+          <th>test type</th>
+          <th>start pressure</th>
+          <th>end pressure</th>
+        </tr>
+        <tr>
+          <td>Air shell</td>
+          <td>00.00</td>
+          <td>00.00</td>
+        </tr>
+        <tr>
+          <td>Air seat</td>
+          <td>00.00</td>
+          <td>00.00</td>
+        </tr>
+        <tr>
+          <td>hydro shell</td>
+          <td>00.00</td>
+          <td>00.00</td>
+        </tr>
+        <tr>
+          <td>Hydro seat</td>
+          <td>00.00</td>
+          <td>00.00</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="detailstable">
+      <table id="testingparametertable">
+        <tbody>
+          <tr>
+            <td>Cell Id</td>
+            <td>data</td>
+          </tr>
+          <tr>
+            <td>Header Id</td>
+            <td>data1</td>
+          </tr>
+          <tr>
+            <td>Test Id</td>
+            <td>data</td>
+          </tr>
+          <tr>
+            <td>Test Media</td>
+            <td>data</td>
+          </tr>
+          <tr>
+            <td>Item Code</td>
+            <td>data</td>
+          </tr>
+          <tr>
+            <td>INV Item Id</td>
+            <td>data</td>
+          </tr>
+          <tr>
+            <td>Job Number</td>
+            <td>data</td>
+          </tr>
+          <tr>
+            <td>WIP Entity Id</td>
+            <td>data</td>
+          </tr>
+          <tr>
+            <td>Actuator Action</td>
+            <td>data</td>
+          </tr>
+          <tr>
+            <td>INV ORG</td>
+            <td>data</td>
+          </tr>
+          <tr>
+            <td>Model Number</td>
+            <td>data</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function getCurrentDateTime() {
+        const now = new Date();
+
+        const day = String(now.getDate()).padStart(2, "0"); // Day with leading zero
+        const month = String(now.getMonth() + 1).padStart(2, "0"); // Month with leading zero
+        const year = now.getFullYear(); // Full year
+
+        let hours = now.getHours(); // Hours in 24-hour format
+        const minutes = String(now.getMinutes()).padStart(2, "0"); // Minutes with leading zero
+
+        const ampm = hours >= 12 ? "PM" : "AM"; // Determine AM or PM
+        hours = hours % 12 || 12; // Convert to 12-hour format and handle midnight (0 becomes 12)
+
+        return `${day}-${month}-${year} ${String(hours).padStart(
+          2,
+          "0"
+        )}:${minutes} ${ampm}`;
+      }
+
+      setInterval(
+        () =>
+          (document.querySelector(".datatime .text").innerHTML =
+            getCurrentDateTime()),
+        60000
+      );
+    </script>
+  </body>
+</html>

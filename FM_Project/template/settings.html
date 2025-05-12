@@ -1,0 +1,780 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FM_ARCA</title>
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="left-container">
+            <img src="{% static 'image/image 5.png' %}" alt="">
+            <div class="list-items">
+                <ul class="menu">
+                    <li id="dashboard" class="dashboardlist" onclick='navigateTo("/dashboard")'><img src="{% static 'image/dashboard.svg' %}" alt="" class="dashboard">Dashboard</li>
+                    <li  id="tasks" onclick='navigateTo("/tasks")'><img src="{% static 'image/tasks.svg' %}" alt="" class="Tasks">Tasks</li>
+                    <li  id="resourcemgnt" onclick='navigateTo("/resourcemgntnew")'><img src="{% static 'image/resourcemgnt.svg' %}" alt="" class="resourcemgnt">Resource mgnt</li>
+                    <li  id="recentlogin" onclick='navigateTo("/recentlogin")'><img src="{% static 'image/recent login.svg' %}" alt="" class="Recent">Recent login</li>
+                    <li  id="users" onclick='navigateTo("/users")'><img src="{% static 'image/users.svg' %}" alt="" class="Users">Users</li>
+                    <li  id="settings" onclick='navigateTo("/settings")'><img src="{% static 'image/settings.svg' %}" alt="" class="Settings">Settings</li>
+                </ul>      
+            </div>
+        </div>
+        <div id="setting-content"class="col-9 main-content" >
+            <div class="main-content">
+                <h2>Connected Device & Settings</h2>
+                <p class="main-para">Integrate devices and your databases</p>
+                <div class="devices">
+                    <div class="device-card1"id="HMI" onclick="toggleConnectivity()">
+                        <img src="{% static 'image/HMI.png' %}" alt="" width="38px";height="38px";>
+                        <h3 class="heading-h31">DELTA HMI DOP-107DV</h3>
+                        <span class="card-content">Integrate Delta HMI DOP-107DV to <br>perform the test.</span>
+                        <span class="status">Disconnected</span>
+                    </div>        
+                    <div class="device-card2"id="r12-mysql" onclick="toggleConnectivity()">
+                        <img src="{% static 'image/R12.svg' %}" alt="" width="30px";height="25px";>
+                        <h3 class="heading-h32">R12 MySQL Server <DOP-107EV></DOP-107EV></h3>
+                        <span class="card-content">Integrate R12 MySQL Server to fetch and <br>store the data.</span>
+                        <span class="status1">Disconnected</span>
+                    </div>
+                </div>
+                
+                <!--click1-->
+                
+                <div id="HMI-connectivity" class="click-container hidden">
+                    <div class="toggle">
+                        <div class="switch" id="switchtag">
+                            <div class="round" id="roundtag">
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="hmi-con">HMI Connectivity</span><br>
+                            <span class="hmi-con1">Enter the HMI details to connect the device</span>
+                        </div>
+                        <div class="click-box">
+                            <div class="click-row">
+                                <div class="setting">
+                                    <label>HMI IP ADDRESS</label>
+                                    <input type="text"  id="hmi_address">
+                                </div>
+                                <div class="setting">
+                                    <label>HMI PORT</label>
+                                    <input type="text" id="hmi_port">
+                                </div>
+                            </div>
+                            <button class="save-btn" id="save_hmi">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!---click2-->
+
+                <div id="r12-connectivity" class="click-container1 hidden">
+                    <div class="toggle">
+                        <div class="switch" id="switchtag">
+                            <div class="round" id="roundtag1">
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <span class="hmi-con">R12 Server Connectivity</span><br>
+                            <span class="hmi-con1">Enter the R12 serve details to connect the MySQL database</span>
+                        </div>
+                        <div class="click-box">
+                            <div class="click-row">
+                                <div class="setting">
+                                    <label>FM ARCA HOST ADDRESS</label>
+                                    <input type="text"  id="address">
+                                </div>
+                                <div class="setting">
+                                    <label>FM ARCA PORT</label>
+                                    <input type="text" id="port">
+                                </div>
+                                
+                            </div>
+                            <div class="click-row">
+                                <div class="setting">
+                                    <label>FM ARCA DATABASE</label>
+                                    <input type="text" id="database">
+                                </div>
+                                <div class="setting">
+                                    <label>FM ARCA OPTION</label>
+                                    <input type="text" id="option">
+                                </div>
+                                
+                            </div>
+                            <div class="click-row">
+                                <div class="setting">
+                                    <label>FM ARCA USERNAME</label>
+                                    <input type="text">
+                                </div>
+                                <div class="setting">
+                                    <label>FM ARCA PASSWORD</label>
+                                    <input type="text">
+                                </div>
+                                
+                            </div>
+                            <button class="save-btn" id="r12connect">Connect</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="imagepara">
+                <div class="features">
+                    <div class="feature">
+                        <img src="{% static 'image/s-texh.svg' %}" id="smallimg">
+                        <span class="feature-span">S-TECH FLOW TESTER</span>
+                        <span class="statusenabled">Enabled</span>                       
+                        <button class="disable-button" onclick="
+                        tester()">Disable</button>
+                        <span class="enable-delta1">Integrate S-Tech flow tester to perform the test.</span>
+                        
+                    </div>
+                    <div class="feature">
+                        <img src="{% static 'image/s-texh.svg' %}" id="smallimg">
+                        <span class="feature-span">S-TECH LEAK TESTER</span>
+                        <span class="statusdisable">Disable</span>
+                        <button class="enable-button" onclick="tester1()">Enable</button>
+                        <span class="enable-class66">Integrate S-Tech flow tester to perform the test.</span>
+                    </div>
+                </div>
+            </div>
+                <div class="sub-title">
+                    <p class="additional-para">Additional Features</p>
+                <p class="additional-para2">Customize these setting to modified the device controls and special valves testing</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-span">DELTA HMI DOP-107DV Write Mode</span>
+                        <span class="statusenabled" id="delta_hmi">Enabled</span>                       
+                        <button class="disable-button">Disable</button>
+                        <span class="enable-delta">Enable Delta HMI to write the testing parameters.</span>
+                        
+                    </div>
+                    <div class="feature">
+                        <span class="feature-span">CLASS 6 - Special Value</span>
+                        <span class="statusdisable">Disable</span>
+                        <button class="enable-button">Enable</button>
+                        <span class="enable-class6">Enable this option to perform special valve test in this rig.</span>
+                    </div>
+                </div>
+                
+                </div>
+                
+                <div class="sub-title1">
+                    <p class="additional-para">Other Settings</p>
+                <p class="additional-para2">Customize these settings for your convenience.</p>
+                </div>
+                
+                <div class="settings-box">
+                    <div class="setting-row">
+                        <div class="setting">
+                            <label>Good Result</label>
+                            <input type="text" id="good_result">
+                        </div>
+                        <div class="setting">
+                            <label>Bad Result</label>
+                            <input type="text" id="bad_result">
+                        </div>
+                    </div>
+        
+                    <div class="setting-row">
+                        <div class="setting">
+                            <label>Cell ID</label>
+                            <input type="text" id="cell_id">
+                        </div>
+                        <div class="setting">
+                            <label>Hydro Shell Leak Allowed (bar)</label>
+                            <input type="text" id="hydro_leak">
+                        </div>
+                    </div>
+        
+                    <button class="save-btn" onclick="savesetting()">Save</button>
+                </div> 
+            </div> 
+            <div class="side-image">
+                <img src="{% static 'image/rightimage.png' %}" alt="" id="side-image">
+            </div>  
+        </div>
+    <script>
+        
+const toggleButton = document.getElementById('r12-mysql');
+const formContainer = document.getElementById('r12-connectivity');
+
+const toggleButton1 = document.getElementById('HMI');
+const formContainer1 = document.getElementById('HMI-connectivity');
+
+toggleButton.addEventListener('click', function() {
+
+    if (!formContainer1.classList.contains('hidden')) {
+        formContainer1.classList.add('hidden');
+    }
+ 
+    formContainer.classList.toggle('hidden');
+});
+
+toggleButton1.addEventListener('click', function() {
+
+    if (!formContainer.classList.contains('hidden')) {
+        formContainer.classList.add('hidden');
+    }
+    formContainer1.classList.toggle('hidden');
+});
+
+// Enable - Disable -Flow Tester//
+
+function tester() {
+    var disablebutton = document.getElementsByClassName("disable-button")[0];
+    var statusenabled = document.getElementsByClassName("statusenabled")[0];
+    
+    if (disablebutton.innerHTML === "Enable") {
+        disablebutton.innerHTML = "Disable";
+        statusenabled.innerHTML = "Enabled";
+        statusenabled.style.backgroundColor = "green"; // Green indicates enabled state
+    } else {
+        disablebutton.innerHTML = "Enable";
+        statusenabled.innerHTML = "Disabled";
+        statusenabled.style.backgroundColor = "red"; // Red indicates disabled state
+    }
+};
+
+function tester1(){
+    var enablebutton = document.getElementsByClassName("enable-button")[0];
+    var statusdisable = document.getElementsByClassName("statusdisable")[0];
+    
+
+    if (enablebutton.innerHTML === "Enable"){
+        enablebutton.innerHTML = "Disable";
+        statusdisable.innerHTML = "Enabled";
+        statusdisable.style.backgroundColor = "green";
+    }
+    else{
+        enablebutton.innerHTML = "Enable";
+        statusdisable.innerHTML = "Disabled";
+        statusdisable.style.backgroundColor = "red";
+    }
+};
+
+// save other setting //
+
+function savesetting(){
+    var good_result = document.getElementById("good_result").value;
+    var bad_result = document.getElementById("bad_result").value;
+    var cell_id = document.getElementById("cell_id").value;
+    var hydro_leak = document.getElementById("hydro_leak").value;
+
+
+    if(good_result ==="" || good_result ==="" || cell_id==="" || hydro_leak ===""){
+        alert("Fileds should not empty")
+        return;
+    }
+    console.log("good_result:",good_result)
+    var formdata = new FormData()
+    formdata.append('goodresult',good_result),
+    formdata.append('badresult',bad_result),
+    formdata.append('cellid',cell_id),
+    formdata.append('hydroleak',hydro_leak)
+
+    var response = fetch('/save_setting_data/',{
+        method:"POST",
+        body:formdata
+    })
+
+    .then(response=>response.json())
+    .then(data=>{
+        alert("Data saved successfully")
+        document.getElementById('good_result').value = "";
+        document.getElementById('bad_result').value = "";
+        document.getElementById('cell_id').value = "";
+        document.getElementById('hydro_leak').value = "";
+    })
+    .catch(error=>{
+        alert("Data not saved")
+    })
+};
+
+// toggle button //
+
+document.getElementById("roundtag").addEventListener('click',function(){
+    roundtag.style.transform = "translateX(25px)"; 
+    roundtag.style.backgroundColor="green";
+});
+
+ // hmi connect //
+
+document.getElementById("save_hmi").addEventListener('click',function(){
+    var hmi_address = document.getElementById("hmi_address").value;
+    var hmi_port = document.getElementById("hmi_port").value;
+    var roundtag = document.getElementById("roundtag");
+    var status = document.getElementsByClassName("status")[0];
+
+    if(hmi_address ==="" || hmi_port ===""){
+        alert("Fields should not be empty")
+        return;
+    }
+
+    var formdata = new FormData()
+    formdata.append('hmi_Address',hmi_address)
+    formdata.append('hmi_Port',hmi_port)
+
+    let response = fetch('/save_hmi_details/',{
+        method:"POST",
+        body:formdata
+    })
+
+    // else{
+    //     roundtag.style.transform = "translateX(25px)"; 
+    //     roundtag.style.backgroundColor="green";
+    //     status.innerHTML="Connected";
+    //     status.style.backgroundColor="#CBE0B6";
+    //     status.style.color = "#629C28";
+    // }
+
+});
+
+ // R12 connect //
+
+document.getElementById("r12connect").addEventListener('click',function(){
+    var address = document.getElementById("address").value;
+    var port = document.getElementById("port").value;
+    var database = document.getElementById("database").value;
+    var option = document.getElementById("option").value;
+    var roundtag1 = document.getElementById("roundtag1");
+    var status1 = document.getElementsByClassName("status1")[0];
+
+    if(address ==="" || port === "" || database === "" || option ===""){
+        alert("Fields should not be empty")
+        return;
+    }
+    else{
+        roundtag1.style.transform = "translateX(25px)"; 
+        roundtag1.style.backgroundColor="green";
+        status1.innerHTML='Connected';
+        status1.style.backgroundColor="#CBE0B6";
+        status1.style.color = "#629C28";
+    }
+
+});
+
+// active class //
+ 
+function navigateTo(page) {
+    localStorage.setItem('activeTab', page);
+    window.location.href = page; 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const activeTab = localStorage.getItem('activeTab');
+    console.log(activeTab,'activeTab');
+    
+    if (activeTab) {
+        document.querySelectorAll('ul li').forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        const activeTabId = activeTab.split('/').pop(); 
+        const activeTabElement = document.getElementById(activeTabId);
+        if (activeTabElement) {
+            activeTabElement.classList.add('active');
+            activeTabElement.style.backgroundColor="white";
+            activeTabElement.style.color="orange";
+            activeTabElement.querySelector('img').style.backgroundColor = "#F78F25";
+        }
+    }
+});
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+</head>
+
+<body>
+    <div class="container-fluid" style="width:100%; height: 130%;">
+        <div class="row">
+            <div class="col-2" style="height: 200%; background-color: #040D52;">
+                <div class="text-center" style="margin-top: 25px;">
+                    <img src="{% static 'image/image 5.png' %}" class="rounded" alt="..."
+                        style="width: 190px; height: 70px;">
+                </div>
+                <div class="text-start"
+                    style="margin-top:50px; margin-left: 15px; width: 200px;height: 250px; color: white;">
+                    <ul style="list-style-type: none;">
+                        <li onclick="window.location.href='/dashboard';"
+                            style="width: 150px;padding: 10px; border-radius: 15px;"><img
+                                src="{% static 'image/dashboard.svg' %}" style="margin-right: 10px;">Dashboard</li>
+                        <li style="width: 150px;padding: 10px; border-radius: 15px;"><img
+                                src="{% static 'image/tasks.svg' %}" style="margin-right: 10px;">Tasks</li>
+                        <li onclick="window.location.href='/resourcemgnt';"
+                            style="width: 200px;padding: 10px; border-radius: 15px;"><img
+                                src="{% static 'image/resourcemgnt.svg' %}" style="margin-right: 10px;">Resource mgnt
+                        </li>
+                        <li style="width: 150px;padding: 10px; border-radius: 15px;"><img
+                                src="{% static 'image/recent login.svg' %}" style="margin-right: 10px;">Recent login
+                        </li>
+                        <li style="width: 150px;padding: 10px; border-radius: 15px;"><img
+                                src="{% static 'image/users.svg' %}" style="margin-right: 10px;">Users</li>
+                        <li onclick="window.location.href='/settings';"
+                            style="width: 150px;padding: 10px; border-radius: 15px;"><img
+                                src="{% static 'image/settings.svg' %}" style="margin-right: 10px;">Settings</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="text-start" style="font-size: 35px; padding: 10px; margin-top: 10px;">Connected Device &
+                    Integrated Programs</div>
+                <div class="text-start" style="font-size: 18px; padding: 10px;">Integrate devices and your databases
+                </div>
+                <div class="row">
+                    <div class="col-6"
+                        style="width: 350px;height: 150px;margin-left: 20px;border-radius:10px; background-color: white; box-shadow: 2px 2px 2px 1px gray;">
+                        <div class="row" id="hmiclick">
+                            <div class="col-6" style="height: 50px;margin-top: 10px;"><img
+                                    src="{%static 'image/HMI.png' %}" alt=""></div>
+                            <div class="col-6  text-center"
+                                style="margin-top: 10px;width: 150px ;height: 25px;color: #629C28; background-color: #E6F6D1; border-radius: 5px;">
+                                <label>Connected</label></div>
+                            <div class="content">
+                                <h5 style="color: black; font-size: 15px;">DELTA HMI DOP-107EV</h5>
+                                <h6 style="color: #756464; font-size: 12px;">Integrate Delta HMI DOP-107EV to<br>
+                                    perform the test.</h6>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6" id="r12click" style="width: 350px;height: 150px;margin-left: 20px;border-radius: 10px;background-color: white; box-shadow: 2px 2px 2px 1px gray;">
+                        <div class="row">
+                            <div class="col-6" style="height: 50px;margin-top: 10px;"><img
+                                    src="{%static 'image/R12.svg' %}" alt=""></div>
+                            <div class="col-6  text-center"
+                                style="margin-top: 10px;width: 150px ;height: 25px;color: #629C28; background-color: #E6F6D1; border-radius: 5px;">
+                                <label>Disconnected</label></div>
+                            <div class="content">
+                                <h5 style="color: black; font-size: 15px;">R12 MySQL Server</h5>
+                                <h6 style="color: #756464; font-size: 12px;">Integrate R12 MySQL Server to fetch and<br>
+                                    store the data.</h6>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="polygen hidden" id="leftpolygen" style="margin-top: -20%; margin-left: 20%;">
+                        <img src="{% static 'image/polygon.png' %}"></div>
+                    <div class="row hidden" id="hmiview"style="width: 720px;height: 220px;margin-top: -38%;margin-left: 20px;border-radius: 10px;background-color: white; box-shadow: 1px 1px 2px 1px gray;">
+                        <div class="col-6 mt-3">
+                            <h5>HMI Connectivity</h5>
+                            <h6 style="color: #756464;">Enter the HMI details to connect the device</h6>
+                            <h5 class="mt-4">HMI IP ADDRESS</h5>
+                            <input type="text"
+                                style="width: 300px;height: 35px; background-color: #EDE8E8;border: none;border-radius: 5px;">
+                        </div>
+                        <div class="col-6">
+                            <img class="mt-3" style="margin-left: 78%;" src="{% static 'image/Toggle.png' %}">
+                            <h5 style="margin-top: 32px;">HMI PORT</h5>
+                            <input type="text"
+                                style="width: 300px;height: 35px; background-color: #EDE8E8;border: none;border-radius: 5px;">
+                            <button
+                                style="border: none; background-color: #040D52; color: white; border-radius: 5px; width: 90px; margin-left:65%; margin-top: 20px;">Connect</button>
+                        </div>
+
+                    </div>
+                    <div class="polygen hidden" id="rightpolygen"  style="margin-top: -16%; margin-left: 60%;">
+                        <img src="{% static 'image/polygon.png' %}"></div>
+                    <div class="row hidden" id="R12view" style="width: 720px;height: 420px;margin-top: -29%;margin-left: 20px;border-radius: 10px;background-color: white; box-shadow: 1px 1px 2px 1px gray;">
+                        <div class="col-6 mt-3">
+                            <h5>R12 Server Connectivity</h5>
+                            <h6 style="color: #756464;">Enter the R12 serve details to connect the MySQL database</h6>
+                            <h5 class="mt-4">FM ARCA HOST ADDRESS</h5>
+                            <input type="text"
+                                style="width: 300px;height: 35px; background-color: #EDE8E8;border: none;border-radius: 5px;">
+                            <h5 class="mt-4">FM ARCA DATABASE</h5>
+                            <input type="text"
+                                style="width: 300px;height: 35px; background-color: #EDE8E8;border: none;border-radius: 5px;">
+                            <h5 class="mt-4">FM ARCA USERNAME</h5>
+                            <input type="text"
+                                style="width: 300px;height: 35px; background-color: #EDE8E8;border: none;border-radius: 5px;">
+                        </div>
+                        <div class="col-6">
+                            <img class="mt-3" style="margin-left: 78%;" src="{% static 'image/Toggle.png' %}">
+                            <h5 style="margin-top: 50px;">FM ARCA PORT</h5>
+                            <input type="text"
+                                style="width: 300px;height: 35px; background-color: #EDE8E8;border: none;border-radius: 5px;">
+                            <h5 style="margin-top: 23px;">FM ARCA OPTION</h5>
+                            <input type="text"
+                                style="width: 300px;height: 35px; background-color: #EDE8E8;border: none;border-radius: 5px;">
+                            <h5 style="margin-top: 23px;">FM ARCA PASSWORD</h5>
+                            <input type="text"
+                                style="width: 300px;height: 35px; background-color: #EDE8E8;border: none;border-radius: 5px;">
+                            <button
+                                style="border: none; background-color: #040D52; color: white; border-radius: 5px; width: 90px; margin-left:65%; margin-top: 20px;">Connect</button>
+                        </div>
+
+                    </div>
+                    <div class="row"style="border-radius: 5px;background-color: white; height: 110px;width: 720px;margin-left: 20px;box-shadow: 1px 1px 2px 1px gray;">
+                        <div class="col-3" style="margin-top: 15px;"><img src="{% static 'image/s-texh.svg' %}"></div>
+                        <div class="col-6 text-start" style=" display: flex;justify-content: space-start;color: black;">
+                            <h5 style="font-size: 15px;margin-top: 15px;">S-TECH FLOW TESTER</h5><label
+                                style="margin-left: 50px;margin-top: 12px; background-color: #24AD1D; width: 80px; height: 25px;text-align: center; border-radius: 5px;color: white;">Enabled</label>
+                        </div>
+                        <div class="col-3"> <button
+                                style="width: 120px; margin-top: 20%; border: none; background-color: #040D52; color: white; border-radius: 5px;">Disable</button>
+                        </div>
+                        <p style="color: #756464; margin-left: 25%;margin-top:-7%;">Integrate S-Tech flow tester to
+                            perform<br> the test.</p>
+                    </div>
+                
+                    <div class="row"
+                        style="border-radius: 5px;background-color: white; height: 110px; width: 720px;margin-left: 20px;box-shadow: 1px 1px 2px 1px gray;">
+                        <div class="col-3" style="margin-top: 15px;"><img src="{% static 'image/s-texh.svg' %}"></div>
+                        <div class="col-6 text-start" style=" display: flex;justify-content: space-start;color: black;">
+                            <h5 style="font-size: 15px;margin-top: 15px;">S-TECH LEAK TESTER</h5><label
+                                style="margin-left: 50px;margin-top: 12px; background-color: #D11414; width: 80px; height: 25px;text-align: center; border-radius: 5px;color: white;">Disable</label>
+                        </div>
+                        <div class="col-3"> <button
+                                style="width: 120px; border: none; background-color: #040D52; color: white; border-radius: 5px;">Disable</button>
+                        </div>
+                        <p style="color: #756464; margin-left: 25%;">Integrate S-Tech flow tester to
+                            perform<br> the test.</p>
+                    </div>
+                    <div class="additional" style= "margin-left: 10px;color: black;">
+                        <h4>Additional Features</h4>
+                        <h6>Customize these setting to modified the device controls and special valves testing</h6>
+                    </div>
+                    <div class="row"
+                        style="border-radius: 5px;background-color: white; height: 90px;width: 720px;margin-left: 20px;box-shadow: 1px 1px 2px 1px gray;">
+                        <div class="col-3" style="margin-top: 15px;"><img src="{% static 'image/s-texh.svg' %}"></div> -->
+                        <!-- <div class="col-9 text-start" style=" display: flex;justify-content: space-start;color: black;">
+                            <h5 style="font-size: 15px;margin-top: 15px;">DELTA HMI DOP-107EV Write Mode</h5><label
+                                style="margin-left: 50px;margin-top: 12px; background-color: #D11414; width: 80px; height: 25px;text-align: center; border-radius: 5px;color: white;">Disable</label>
+                        </div>
+                        <div class="col-3"> <button
+                                style="width: 120px; margin-top: 20%; border: none; background-color: #040D52; color: white; border-radius: 5px;">Disable</button>
+                        </div>
+                        <p style="color: #756464; margin-top:-2%;">Enable Delta HMI to write the testing parameters.</p>
+                    </div>
+                    <div class="row"
+                        style="border-radius: 5px;background-color: white; height: 90px; margin-top:-83%; width: 720px;margin-left: 20px;box-shadow: 1px 1px 2px 1px gray;"> -->
+                        <!-- <div class="col-3" style="margin-top: 15px;"><img src="{% static 'image/s-texh.svg' %}"></div>
+                        <div class="col-9 text-start" style=" display: flex;justify-content: space-start;color: black;">
+                            <h5 style="font-size: 15px;margin-top: 15px;">CLASS 6 - Special Valve</h5><label
+                                style="margin-left: 50px;margin-top: 12px; background-color: #D11414; width: 80px; height: 25px;text-align: center; border-radius: 5px;color: white;">Disable</label>
+                        </div>
+                        <div class="col-3"> <button
+                                style="width: 120px; margin-top: 20%; border: none; background-color: #040D52; color: white; border-radius: 5px;">Disable</button>
+                        </div>
+                        <p style="color: #756464; margin-top:-2%;">Enable this option to perform special valve test in
+                            this rig.</p>
+                    </div>
+                    <div class="additional" style="margin-top: -97%; margin-left: 10px; color: black;">
+                        <h4>Other Settings</h4>
+                        <h6>Customize these settings for your convenience.</h6>
+                    </div>
+                    <div class="form"
+                        style="margin-left: 20px;border-radius: 5px;width: 720px;height: 200px;margin-top:-115%;box-shadow: 1px 1px 2px 1px gray;background-color: white;">
+                        <div class="row">
+                            <div class="col-6" style="margin-top: 5px; color: black;">
+                                <div class="flabel">
+                                    <label>Good Result</label><br>
+                                    <input type="text" name="" id=""
+                                        style="width: 300px;height: 40px; border-radius: 5px;border: none;background-color:#EDE8E8;">
+                                </div>
+                                <div class="flabel">
+                                    <label>Cell ID</label><br>
+                                    <input type="text" name="" id=""
+                                        style="width: 300px;height: 40px; border-radius: 5px; border: none;background-color:#EDE8E8;">
+                                </div>
+                            </div>
+                            <div class="col-6" style="margin-top: 5px;color: black;">
+                                <div class="flabel">
+                                    <label>Bad Result</label><br>
+                                    <input type="text" name="" id=""
+                                        style="width: 300px;height: 40px; border-radius: 5px;border: none;background-color:#EDE8E8;">
+                                </div>
+                                <div class="flabel">
+                                    <label>Hydro Shell Leak Allowed (bar)</label><br>
+                                    <input type="text" name="" id=""
+                                        style="width: 300px;height: 40px; border-radius: 5px;border: none;background-color:#EDE8E8;">
+                                </div>
+                            </div>
+                            <button
+                                style="width: 100px; height: 30px; border-radius: 5px; background-color: #040D52;color: white; border: none;margin-left: 79%;">Save</button>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-3 text-bg-secondary" style="height: 180%;">
+                <img src="{% static 'image/rightimage.png' %}" alt="" style="height: 100%;">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+     <script>
+
+        document.getElementById("hmiclick").addEventListener('click', function () {
+            var leftpolygen = document.getElementById("leftpolygen");
+            var hmiview = document.getElementById("hmiview");
+
+            if (!leftpolygen.classList.contains("hidden")) {
+                leftpolygen.classList.add("hidden");
+            }
+                if (!hmiview.classList.contains("hidden")) {
+                hmiview.classList.add("hidden")
+            }           
+            else {
+                leftpolygen.classList.remove("hidden")
+                hmiview.classList.remove("hidden")
+            }
+        });
+
+        document.getElementById("r12click").addEventListener('click', function () {
+            var rightpolygen = document.getElementById("rightpolygen");
+            var R12view = document.getElementById("R12view");
+
+            if (!rightpolygen.classList.contains("hidden")) {
+                rightpolygen.classList.add("hidden");
+            }
+                if (!R12view.classList.contains("hidden")) {
+                    R12view.classList.add("hidden")
+            }           
+            else {
+                rightpolygen.classList.remove("hidden")
+                R12view.classList.remove("hidden")
+            }
+        });
+    </script>
+</body>
+
+</html>  -->

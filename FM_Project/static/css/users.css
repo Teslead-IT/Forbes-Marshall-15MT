@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+.sub-container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+.left-container{
+    background-color: #040D52;
+    height: 100vh;
+    width: 16.6vw;
+}
+.left-container img{
+    width: 10rem;
+    margin-left: 3.5rem;
+    margin-top: 2.5rem;
+}
+.list-items{
+    color: aliceblue;
+    /* margin-left:3.5rem ; */
+    margin-top: 2.5rem;
+}
+.menu {
+    list-style-type: none;
+    line-height: 1px;
+    margin-left: 1rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu li {
+    display: flex;
+    align-items: center; 
+    padding: 10px 0;
+    width: 80%;  
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    height: 30%;
+    border-radius: 20px;
+}
+.menu img {
+    width: 1rem;
+    height: 1rem;   
+    margin-top: -2px;
+    margin: 10px;
+    margin-left: 3.5rem;
+}
+
+.menu li:hover {
+    background-color: white;
+    color: #F78F25;
+    /* border-radius: 20px; */
+    width: 80%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.menu li:hover img {
+    background-color: #F78F25;
+}
+.menu li.active {
+    background-color: white;
+}

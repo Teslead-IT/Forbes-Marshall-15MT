@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent login</title>
+    <link rel="stylesheet" href="{% static 'css/recentlogin.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- <div class="col-3 sidebar">
+            <div class="logo">
+                <img src="{% static 'image/image 5.png' %}" alt="..."style="width: 190px; height: 70px;">
+            </div>
+            <div class="items">
+                <ul class="menu">
+                    <li onclick="window.location.href='/dashboard';" class="dashboardlist"><img src="{% static 'image/dashboard.svg' %}" alt="" class="dashboard">Dashboard</li>
+                    <li onclick="window.location.href='/tasks';"><img src="{% static 'image/tasks.svg' %}" alt="" class="Tasks">Tasks</li>
+                    <li onclick="window.location.href='/resourcemgnt';"><img src="{% static 'image/resourcemgnt.svg' %}" alt="" class="resourcemgnt">Resource mgnt</li>
+                    <li onclick="window.location.href='/recentlogin';"><img src="{% static 'image/recent login.svg' %}" alt="" class="Recent">Recent login</li>
+                    <li><img src="{% static 'image/users.svg' %}" alt="" class="Users">Users</li>
+                    <li onclick="window.location.href='/settings';"><img src="{% static 'image/settings.svg' %}" alt="" class="Settings">Settings</li>
+                </ul>   
+            </div>
+        </div> -->
+        <div class="left-container">
+            <img src="{% static 'image/image 5.png' %}" alt="">
+            <div class="list-items">
+                <ul class="menu">
+                    <li id="dashboard" class="dashboardlist" onclick='navigateTo("/dashboard")'><img src="{% static 'image/dashboard.svg' %}" alt="" class="dashboard">Dashboard</li>
+                    <li  id="tasks" onclick='navigateTo("/tasks")'><img src="{% static 'image/tasks.svg' %}" alt="" class="Tasks">Tasks</li>
+                    <li  id="resourcemgnt" onclick='navigateTo("/resourcemgntnew")'><img src="{% static 'image/resourcemgnt.svg' %}" alt="" class="resourcemgnt">Resource mgnt</li>
+                    <li  id="recentlogin" onclick='navigateTo("/recentlogin")'><img src="{% static 'image/recent login.svg' %}" alt="" class="Recent">Recent login</li>
+                    <li  id="users" onclick='navigateTo("/users")'><img src="{% static 'image/users.svg' %}" alt="" class="Users">Users</li>
+                    <li  id="settings" onclick='navigateTo("/settings")'><img src="{% static 'image/settings.svg' %}" alt="" class="Settings">Settings</li>
+                </ul>      
+            </div>
+        </div>
+        <div class="rightside">
+            <h1>Recent Login Details</h1>
+            <h6>View the recent login details</h6>
+            <div class="display_container">
+                <table border="1">
+                    <thead>
+                        <td>USERNAME</td>
+                        <td>EMPLOYEE ID</td>
+                        <td>LOGIN TIME</td>
+                    </thead>
+                    <tbody>
+                        {% for datas in data %}
+                        <tr>
+                            <td>{{datas.col1}}</td>
+                            <td>{{datas.col2}}</td>
+                            <td>{{datas.col3}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        </div>
+ <script>
+    // active class //
+ 
+function navigateTo(page) {
+    localStorage.setItem('activeTab', page);
+    window.location.href = page; 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const activeTab = localStorage.getItem('activeTab');
+    console.log(activeTab,'activeTab');
+    
+    if (activeTab) {
+        document.querySelectorAll('ul li').forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        const activeTabId = activeTab.split('/').pop(); 
+        const activeTabElement = document.getElementById(activeTabId);
+        if (activeTabElement) {
+            activeTabElement.classList.add('active');
+            activeTabElement.style.backgroundColor="white";
+            activeTabElement.style.color="orange";
+            activeTabElement.querySelector('img').style.backgroundColor = "#F78F25";
+        }
+    }
+});
+
+ </script>       
+</body>
+</html>

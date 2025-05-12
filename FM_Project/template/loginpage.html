@@ -1,0 +1,1498 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="{% static 'css/loginpage.css' %}">
+</head>
+<body>
+    {% csrf_token %}
+    <div class="container">
+        <div class="logincontainer1" style="display:flex;">
+                <div class="loader hide-loader" id="loader20"></div>
+            <div class="leftside">
+                <div class="imagediv">
+                    <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+                </div>
+                 <div class="sign-in">
+                    <h4>Sign in</h4>
+                 </div>
+                 <div class="keyword">
+                    <h5>Use you account to login</h5>
+                 </div>
+                 <div class="selection">
+                    <select id="loginSelect">
+                        <option value="Portal Login">Portal Login</option>
+                        <option value="R12 Login">R12 Login</option>
+                    </select>
+                 </div>
+            </div>
+            <div class="rightside">
+                <div class="inputbox">
+                    <input type="text" placeholder="Enter Username" id="username">
+                </div>
+                <div class="forgotuser">
+                    <h5 class="errormsg"></h5>
+                    <h5 id="forgotusername">Forget username?</h5>
+                </div>
+                <div class="buttons">
+                    <div class="create">
+                        <button id="createuser">Create user</button>
+                    </div>
+                    <div class="next">
+                        <button id="nextButton1" onclick="usernamecheck()">Next</button>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        
+<!-- 2nd page -->
+    <div class="logincontainer2" style="display: none;">
+        <div class="loader hide-loader" id="loader1"></div>
+        <div class="leftside">
+            <div class="imagediv">
+                <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+            </div>
+             <div class="sign-in">
+                <h4>Sign in</h4>
+             </div>
+             <div class="keyword">
+                <h5>Use you account to login</h5>
+             </div>
+             <div class="selection">
+                <select>
+                    <option>Portal Login</option>
+                    <option>R12 Login</option>
+                </select>
+             </div>
+        </div>
+        <div class="rightside">
+            <div class="inputbox">
+                <input type="password" placeholder="Enter password" id="password">
+                <img src="{% static 'image/showpassword.png' %}" alt="" id="showpassword"> 
+                <img src="{% static 'image/hidepassword.png' %}" alt=""hidden id="hidepassword"> 
+            </div>
+            <div class="forgotuser">
+                <h5 class="errormsg2"></h5>
+            </div>
+            <div class="buttons">
+                <div class="create">
+                    <button id="backbtn1">Back</button>
+                </div>
+                <div class="next">
+                    <button id="nextButton2" onclick="passwordcheck1()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- 3rd page -->
+
+<div class="logincontainer3"  style="display: none;">
+    <div class="loader hide-loader" id="loader3"></div>
+    <div class="leftside">
+        <div class="imagediv">
+            <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+        </div>
+            <div class="sign-in">
+            <h4>Find your username</h4>
+            </div>
+            <div class="keyword">
+            <h5>Enter your employee id</h5>
+            </div>
+            <div class="selection">
+            <select>
+                <option>Portal Login</option>
+                <option>R12 Login</option>
+            </select>
+            </div>
+    </div>
+    <div class="rightside">
+        <div class="inputbox">
+            <input type="text" placeholder="employee id" id="employeeid">
+        </div>
+        <div class="forgotuser">
+            <h5 id="errormsg9"></h5>
+            <!-- <h5 id="createnewac">create a new account?</h5> -->
+        </div>
+        <div class="buttons">
+            <div class="create">
+                <button id="backbtn2">Back</button>
+            </div>
+            <div class="next">
+                <button id="nextButton3" onclick="finduser()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 3rd page -->
+
+<div class="logincontainer4"  style="display: none;">
+    <div class="loader hide-loader" id="loader4"></div>
+    <div class="leftside">
+        <div class="imagediv">
+            <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+        </div>
+            <div class="sign-in">
+            <h4>Get your username</h4>
+            </div>
+            <div class="keyword">
+            <h5>Remember the username to login the portal</h5>
+            </div>
+            <div class="selection">
+            <select>
+                <option>Portal Login</option>
+                <option>R12 Login</option>
+            </select>
+            </div>
+    </div>
+    <div class="rightside">
+        <div class="inputbox">
+            <input type="text" placeholder="username" id="copyusername" readonly>
+            <img src="{% static 'image/copy.png' %}" alt="" id="copyname">
+        </div>
+        <div class="forgotuser">
+            <h5 class="copyuname"></h5>
+            <h5>Copy your username</h5>  
+        </div>
+        <div class="buttons">
+            <div class="create">
+                <button id="backbtn3">Back</button>
+            </div>
+            <div class="next">
+                <button id="nextButton4">Just Login here</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 4th page -->
+
+<div class="logincontainer5"  style="display: none;">
+    <div class="loader hide-loader" id="loader5"></div>
+    <div class="leftside">
+        <div class="imagediv">
+            <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+        </div>
+            <div class="sign-in">
+            <h4>Create an user account</h4>
+            </div>
+            <div class="keyword">
+            <h5>Enter the administrator password</h5>
+            </div>
+    </div>
+    <div class="rightside">
+        <div class="inputbox">
+            <input type="password" placeholder="Admin password" id="adminpassword">
+            <img src="{% static 'image/showpassword.png' %}" alt="" id="showpassword1"> 
+            <img src="{% static 'image/hidepassword.png' %}" alt="" id="hidepassword1" hidden > 
+        </div>
+        <div class="forgotuser">
+            <h5 class="errormsg3"></h5>
+        </div>
+        <div class="buttons">
+            <div class="create">
+                <button id="backbtn4">Back</button>
+            </div>
+            <div class="next">
+                <button id="nextButton5" onclick="getadminpwd()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 5th page -->
+
+<div class="logincontainer6"  style="display: none;">
+    <div class="loader hide-loader" id="loader6"></div>
+    <div class="leftside">
+        <div class="imagediv">
+            <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+        </div>
+            <div class="sign-in">
+            <h4>Create an user account</h4>
+            </div>
+            <div class="keyword">
+            <h5>Enter your name</h5>
+            </div>
+    </div>
+    <div class="rightside">
+        <div class="inputbox">
+            <input type="text" placeholder="First Name" id="f_name">
+        </div>
+        <div class="lname">
+            <input type="text" placeholder="Last Name" id="l_name">
+        </div>
+        <h5 class="errormsg4"></h5>
+        <div class="buttonss">
+            <div class="create">
+                <button id="backbtn5">Back</button>
+            </div>
+            <div class="next">
+                <button id="nextButton6">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 6th page -->
+
+<div class="logincontainer7"  style="display: none;">
+    <div class="loader hide-loader" id="loader7"></div>
+    <div class="leftside">
+        <div class="imagediv">
+            <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+        </div>
+            <div class="sign-in">
+            <h4>Create an user account</h4>
+            </div>
+            <div class="keyword">
+            <h5>Enter your username</h5>
+            </div>
+    </div>
+    <div class="rightside">
+        <div class="inputbox">
+            <input type="text" placeholder="Enter Username" id="checkusernamevalue" oninput="checkusername()">
+        </div>
+        <div class="forgotuser">
+            <h5 class="errormsg5"></h5>
+        </div>
+        <div class="para">
+            <p>Remember this username to login the portal. Make sure to keep it secure and avoid sharing it with unauthorized individuals.</p>
+        </div>
+        <div class="buttonsss">
+            <div class="create">
+                <button id="backbtn6">Back</button>
+            </div>
+            <div class="next">
+                <button id="nextButton7">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 7th page -->
+
+<div class="logincontainer8"  style="display: none;">
+    <div class="loader hide-loader" id="loader8"></div>
+    <div class="leftside">
+        <div class="imagediv">
+            <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+        </div>
+            <div class="sign-in">
+            <h4>Create an user account</h4>
+            </div>
+            <div class="keyword">
+            <h5>Enter your employee id</h5>
+            </div>
+    </div>
+    <div class="rightside">
+        <div class="inputbox">
+            <input type="text" placeholder="Enter Employee Id" id="checkemployeeid" oninput="checkempid(event)">
+        </div>
+        <div class="forgotuser">
+            <h5 class="errormsg6"></h5>
+        </div>
+        <div class="para">
+            <p>Remember this employee id to identify your username when you forget the username of your account. Make sure to keep it secure and avoid sharing it with unauthorized individuals.</p>
+        </div>
+        <div class="buttonsss">
+            <div class="create">
+                <button id="backbtn7">Back</button>
+            </div>
+            <div class="next">
+                <button id="nextButton8">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 8th page -->
+
+<div class="logincontainer9" id="r12LoginContainer"  style="display: none;">
+    <div class="loader hide-loader" id="loader9"></div>
+    <div class="leftside">
+        <div class="imagediv">
+            <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+        </div>
+            <div class="sign-in">
+            <h4>Create an user account</h4>
+            </div>
+            <div class="keyword">
+            <h5>Enter your password</h5>
+            </div>
+    </div>
+    <div class="rightside">
+        <div class="inputbox">
+            <input type="password" placeholder="Password" id="pwd">
+        </div>
+        <div class="lname">
+            <input type="password" placeholder="Confirm Password" id="cpwd">
+        </div>
+        <h5 class="errormsg7"></h5>
+        <div class="buttonss">
+            <div class="create">
+                <button id="backbtn8" onclick="backbtn8()">Back</button>
+            </div>
+            <div class="next">
+                <button id="nextButton9" onclick="passwordcheck()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 9th page -->
+<div class="logincontainer10"  style="display: none;">
+    <div class="loader hide-loader" id="loader10"></div>
+    <div class="leftside">
+        <div class="imagediv">
+            <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+        </div>
+         <div class="sign-in">
+            <h4>Choose an R12 account</h4>
+         </div>
+         <div class="keyword">
+            <h5>to continue to your R12 account</h5>
+         </div>
+         <div class="selection">
+            <select id="loginSelect1">
+                <option value="R12 Login">R12 Login</option>
+                <option value="Portal Login">Portal Login</option>
+            </select>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Search" oninput="filterUsernames()">
+                <img src="{% static 'image/search.png' %}" alt="">
+            </div>
+         </div>
+    </div>
+    <div class="rightside">
+        <div class="namelist"> 
+                <div id="usernames-list">
+                  {% for item in value %}
+                    <div class="user-item"  data-employee-id="{{ item.1 }}">
+                        <div class="h3-div">
+                            <h3>{{ item.0|slice:":1"|upper }}</h3>
+                        </div>
+                        <div class="head-div">
+                            <h2>{{item.0}}</h2>
+                            <h5>{{item.1}}</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+        </div>
+        <p>Choose your R12 account to login R12 portal and make sure your are choosing your right profile</p>
+    </div>
+</div>
+    
+
+<!-- 10th page -->
+
+<div class="logincontainer11"  style="display: none;">
+    <div class="loader hide-loader" id="loader11"></div>
+    <div class="leftside">
+        <div class="imagediv">
+            <img src="{% static 'image/tesleadlogo.jpg' %}" alt=""> 
+        </div>
+         <div class="sign-in">
+            <h4>Sign in</h4>
+         </div>
+         <div class="keyword">
+            <h5>Use you R12 account to login</h5>
+         </div>
+         <div class="selection">
+            <select>
+                <option>R12 Login</option>
+            </select>
+         </div>
+    </div>
+    <div class="rightside">
+        <div class="inputbox">
+            <input type="password" placeholder="Enter password" id="fpassword">
+            <img src="{% static 'image/showpassword.png' %}" alt="" id="showpwd"> 
+            <img src="{% static 'image/hidepassword.png' %}" alt=""hidden id="hidepwd"> 
+        </div>
+        <div class="forgotuser">
+            <h5 class="errormsg8"></h5>
+        </div>
+        <div class="buttons">
+            <div class="create">
+                <button id="backbtn9">Back</button>
+            </div>
+            <div class="next">
+                <button id="nextButton10" onclick="fpwdcheck()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- java script -->
+
+<script>
+
+
+// 1st page //
+    async function usernamecheck() {
+        var usernameElement = document.getElementById('username');
+        var username = usernameElement.value;
+        var errormsg = document.getElementsByClassName('errormsg')[0];
+        var logincontainer1 = document.querySelector('.logincontainer1');
+        var logincontainer2 = document.querySelector('.logincontainer2');
+        var loader20 = document.getElementById('loader20');
+
+        loader20.classList.remove('hide-loader');  // Show the loader
+        logincontainer1.style.pointerEvents = "none";
+
+        if (username === ""){
+            setTimeout(()=>{
+            usernameElement.style.borderColor = "red";
+            errormsg.innerHTML="Field should not be empty";
+            errormsg.style.color="red";
+            loader20.classList.add('hide-loader');
+            logincontainer1.style.pointerEvents = "auto";
+            // loader20.classList.add('hide-loader');
+            // logincontainer1.style.pointerEvents = "auto";
+            return;
+        },1000)
+        }
+        else{
+            usernameElement.style.borderColor = "green";
+            errormsg.innerHTML="";
+            var formdata = new FormData()
+            formdata.append("username",username);
+            var response = await fetch('/usernamecheck/',{
+                method : "POST",
+                body : formdata,
+        })
+            var result = await response.json();
+            console.log(result)
+
+            
+            if (result.status === 'success'){
+                setTimeout(() => { 
+                logincontainer1.style.left = "-450px";
+                logincontainer1.style.display = "none";
+                
+                logincontainer2.style.transition="0.5s";
+                logincontainer2.style.display="flex";
+
+                loader20.classList.add('hide-loader');
+                logincontainer1.style.pointerEvents = "auto";  // Re-enable interactions
+            }, 1000);
+            }  else{
+                setTimeout(() => {
+                errormsg.innerHTML="Invalid username";
+                errormsg.style.color="red";
+                usernameElement.style.borderColor="red";
+                loader20.classList.add('hide-loader');
+                logincontainer1.style.pointerEvents = "auto";
+            }, 1000);
+        }  }      
+    };
+
+    // 2nd page //
+
+    document.getElementById("backbtn1").addEventListener('click', function() {
+    var logincontainer1 = document.querySelector('.logincontainer1');
+    var logincontainer2 = document.querySelector('.logincontainer2');
+    var loader1 = document.getElementById('loader1');
+    
+    loader1.classList.remove('hide-loader'); 
+    logincontainer2.style.pointerEvents = "none";
+
+    setTimeout(() => {
+    logincontainer2.style.left = "100vw";
+    logincontainer2.style.display = "none"; 
+    logincontainer1.style.left = "0"; 
+    logincontainer1.style.display = "flex"; 
+    logincontainer1.style.transition = '0.5s';
+    
+    loader1.classList.add('hide-loader');
+    logincontainer2.style.pointerEvents = "auto"; 
+    }, 1000);
+
+});
+
+async function passwordcheck1() {
+    var passwordElement = document.getElementById('password');
+    var password = passwordElement.value;
+    var showpassword = document.getElementById("showpassword");
+    var hidepassword = document.getElementById("hidepassword");
+    var logincontainer2 = document.getElementsByClassName("logincontainer2")[0];
+    var errormsg2 = document.getElementsByClassName("errormsg2")[0];
+    var loader1 = document.getElementById('loader1');  
+
+    loader1.classList.remove('hide-loader'); 
+    logincontainer2.style.pointerEvents = "none";
+
+    if (password === ""){
+        setTimeout(() => {
+        passwordElement.style.borderColor = "red";
+        errormsg2.innerHTML="Field should not be empty";
+        errormsg2.style.color="red";
+        loader1.classList.add('hide-loader');
+        logincontainer2.style.pointerEvents = "auto";
+        return;
+    }, 1000);
+    }
+    else{
+        var formdata = new FormData()
+        formdata.append("password",password)
+        var response = await fetch('/passwordcheck/',{
+        method:"POST",
+        body:formdata,
+    });
+
+    var result = await response.json();
+    console.log(result.status)
+    console.log(result.superuser);
+    localStorage.setItem("superuser", result.superuser === "True" ? "true" : "false");
+    
+    if(result.status === "success"){
+        setTimeout(() => {
+        logincontainer2.style.display="none";
+        passwordElement.style.borderColor = "green";
+        errormsg2.innerHTML="";
+        logincontainer2.style.transition = '0.3s';
+        window.location.href = result.redirect_url;
+        loader3.classList.add('hide-loader');
+        logincontainer3.style.pointerEvents = "auto"; 
+        window.location.href = result.redirect_url || "/dashboard";
+        }, 1000);
+       
+    }
+    else{
+        setTimeout(() => {
+        errormsg2.innerHTML="Invalid password";
+        errormsg2.style.color="red";
+        loader1.classList.add('hide-loader');
+        logincontainer2.style.pointerEvents = "auto"; 
+    }, 1000);
+}};
+}
+// hide/show password
+
+document.getElementById('showpassword').addEventListener('click', function() {
+    togglePasswordVisibility(true);
+});
+
+document.getElementById('hidepassword').addEventListener('click', function() {
+    togglePasswordVisibility(false);
+});
+
+function togglePasswordVisibility(show) {
+    var passwordField = document.getElementById('password');
+    var showPasswordImage = document.getElementById('showpassword');
+    var hidePasswordImage = document.getElementById('hidepassword');
+
+    if (show) {
+        passwordField.type = 'text';
+        showPasswordImage.style.display = 'none';
+        hidePasswordImage.style.display = 'inline';
+    } else {
+        passwordField.type = 'password'; 
+        hidePasswordImage.style.display = 'none';
+        showPasswordImage.style.display = 'inline';
+    }
+}
+
+// forgot username //
+
+document.getElementById("forgotusername").addEventListener('click', function() {
+
+    var logincontainer1 = document.getElementsByClassName("logincontainer1")[0];
+    var logincontainer3 = document.getElementsByClassName("logincontainer3")[0];
+    var loader20 = document.getElementById("loader20");
+
+    loader20.classList.remove('hide-loader'); 
+    logincontainer1.style.pointerEvents = "none";
+
+    setTimeout(() => {
+    logincontainer1.style.display = "none";
+    logincontainer1.style.left = "-55vw";
+
+    // logincontainer3.style.transition="5s";
+    logincontainer3.style.display = "flex"; 
+
+    loader20.classList.add('hide-loader');
+    logincontainer1.style.pointerEvents = "auto"; 
+    }, 1000);  
+});
+
+document.getElementById("backbtn2").addEventListener('click', function() {
+    var logincontainer1 = document.querySelector('.logincontainer1');
+    var logincontainer3 = document.querySelector('.logincontainer3');
+    var loader3 = document.getElementById("loader3");
+
+    loader3.classList.remove('hide-loader'); 
+    logincontainer3.style.pointerEvents = "none";
+
+    setTimeout(() => {
+    logincontainer3.style.transition = 'left 0.3s ease-in-out';
+    logincontainer3.style.left = "100vw";
+    logincontainer3.style.display = "none"; 
+    logincontainer1.style.transition = 'left 0.3s ease-in-out';
+    logincontainer1.style.left = "0"; 
+    logincontainer1.style.display = "flex"; 
+    
+    loader3.classList.add('hide-loader');
+    logincontainer3.style.pointerEvents = "auto"; 
+    }, 1000);
+});
+
+var passwordField = document.getElementById("password");
+var showPasswordImage = document.getElementById("showpassword");
+var hidePasswordImage = document.getElementById("hidepassword");
+
+showPasswordImage.addEventListener('click', function() {
+    passwordField.type = "text";
+    showPasswordImage.style.display = "none";
+    hidePasswordImage.style.display = "inline";
+});
+
+hidePasswordImage.addEventListener('click', function() {
+    passwordField.type = "password";
+    hidePasswordImage.style.display = "none";
+    showPasswordImage.style.display = "inline"; 
+});
+
+async function finduser() {
+    var employeeid = document.getElementById("employeeid").value;
+    var copyusername = document.getElementById("copyusername").value;
+    var logincontainer3 = document.getElementsByClassName("logincontainer3")[0];
+    var logincontainer4 = document.getElementsByClassName("logincontainer4")[0];
+    var loader3 = document.getElementById('loader3');
+
+    loader3.classList.remove('hide-loader');  // Show the loader
+    logincontainer3.style.pointerEvents = "none";
+
+    if(employeeid ===""){
+        setTimeout(()=>{
+        document.getElementById("errormsg9").innerHTML="Field should not be empty";
+        loader3.classList.add('hide-loader');
+        logincontainer3.style.pointerEvents = "auto";
+        return;
+    },1000)
+    }
+    var formdata = new FormData()
+    formdata.append('employeeid', employeeid);
+
+var response = await fetch('/finduser/', {
+    method: "POST",
+    body: formdata,
+})
+
+var result = await response.json();
+console.log(result.status);
+
+
+    if (result.status === "success") {
+        setTimeout(() => {
+        logincontainer3.style.display = "none";
+        logincontainer4.style.display = "flex";
+        logincontainer4.style.transition = "left 0.5s ease-in-out";
+        // logincontainer4.style.left = "100%"; 
+        // logincontainer4.style.transform = "translateX(-55%)";
+        document.getElementById("copyusername").value = result.emp_id;
+        document.getElementById("errormsg9").innerHTML="";
+        loader3.classList.add('hide-loader');
+        logincontainer3.style.pointerEvents = "auto";
+        }, 1000); 
+        
+    } else {
+        setTimeout(() => {
+        document.getElementById("errormsg9").innerHTML="Invalid Employee ID";
+        loader3.classList.add('hide-loader');
+        logincontainer3.style.pointerEvents = "auto";
+    }, 1000); 
+          }
+              // <-- This was the missing closing brace for the setTimeout function
+};
+
+// copy username //
+
+document.getElementById("copyname").addEventListener("click", function() {
+    var copyusername = document.getElementById("copyusername");
+    var copyuname = document.getElementsByClassName("copyuname")[0];
+    if (copyusername && copyusername.value) {
+        navigator.clipboard.writeText(copyusername.value).then(function() {
+            copyuname.innerHTML="Username Copied";
+            copyuname.style.color="green";
+
+        }).catch(function(err) {
+            console.error("Error copying text: ", err);
+            alert("Failed to copy username.");
+        });
+    } else {
+        alert("No username to copy!");
+    }
+});
+
+document.getElementById("nextButton4").addEventListener('click',function(){
+    var logincontainer4 = document.getElementsByClassName("logincontainer4")[0];
+    var logincontainer1 = document.getElementsByClassName("logincontainer1")[0];
+    var loader4 = document.getElementById('loader4');  
+
+    loader4.classList.remove('hide-loader'); 
+    logincontainer4.style.pointerEvents = "none";
+
+    setTimeout(function() {
+        logincontainer4.style.display="none";
+        logincontainer1.style.display = "flex"; 
+        logincontainer1.style.transition = "left 0.5s ease-in-out";
+        logincontainer1.style.left = "0"; 
+    
+    
+        loader4.classList.add('hide-loader');  
+        logincontainer4.style.pointerEvents = "auto";  
+    },1000);
+}); 
+
+
+document.getElementById("backbtn3").addEventListener('click',function(){
+    var logincontainer4 = document.getElementsByClassName("logincontainer4")[0];
+    var logincontainer3 = document.getElementsByClassName("logincontainer3")[0];
+    var loader4 = document.getElementById('loader4'); 
+
+    loader4.classList.remove('hide-loader'); 
+    logincontainer4.style.pointerEvents = "none";
+
+    setTimeout(function() { 
+        logincontainer4.style.display="none";
+        logincontainer3.style.display="flex";
+        logincontainer3.style.transition = "left 0.5s ease-in-out";
+   
+        loader4.classList.add('hide-loader');  
+        logincontainer4.style.pointerEvents = "auto";  
+    },1000);
+})
+
+document.getElementById("createuser").addEventListener('click',function(){
+    var logincontainer1 = document.getElementsByClassName("logincontainer1")[0];
+    var logincontainer4 = document.getElementsByClassName("logincontainer4")[0];
+    var logincontainer5 = document.getElementsByClassName("logincontainer5")[0];
+    var loader20 = document.getElementById('loader20');
+
+    loader20.classList.remove('hide-loader');  // Show the loader
+    logincontainer1.style.pointerEvents = "none";
+
+    setTimeout(function() {
+    logincontainer1.style.display="none";
+    logincontainer5.style.display="flex";
+    loader20.classList.add('hide-loader');  
+    logincontainer1.style.pointerEvents = "auto";  
+    },1000);
+})  
+  
+async function getadminpwd() {
+    var adminpassword = document.getElementById("adminpassword").value;
+    var logincontainer5 = document.getElementsByClassName("logincontainer5")[0];
+    var logincontainer6 = document.getElementsByClassName("logincontainer6")[0];
+    var errormsg3 = document.getElementsByClassName("errormsg3")[0];
+    var loader5 = document.getElementById("loader5");
+
+    loader5.classList.remove('hide-loader');  // Show the loader
+    logincontainer5.style.pointerEvents = "none";
+
+    if(adminpassword === ""){
+        setTimeout(()=>{
+        errormsg3.innerHTML="Field cannot be empty";
+        errormsg3.style.color = "red";
+        loader5.classList.add('hide-loader');  
+        logincontainer5.style.pointerEvents = "auto";
+        return;
+    },1000)
+    }
+        var formdata = new FormData()
+        formdata.append('adminpassword',adminpassword)
+        var response = await fetch('/getadminpwd/',{
+            method : "POST",
+            body : formdata,
+        })
+        var result = await response.json();
+        console.log(result.status);
+        if(result.status === "success"){
+            setTimeout(function() {
+            logincontainer5.style.display="none";
+            errormsg3.innerHTML="";
+            logincontainer6.style.display="flex";
+            logincontainer6.style.transition = "left 0.5s ease-in-out";
+            
+            loader5.classList.add('hide-loader');  
+            logincontainer5.style.pointerEvents = "auto";  
+            },1000);
+        }
+        else{
+            setTimeout(function() {
+            errormsg3.innerHTML = "Invalid password";
+            errormsg3.style.color = "red";
+            loader5.classList.add('hide-loader');  
+            logincontainer5.style.pointerEvents = "auto"; 
+            loader5.classList.add('hide-loader');  
+            logincontainer5.style.pointerEvents = "auto";  
+            },1000);
+        }
+        
+}
+
+var adminpassword = document.getElementById("adminpassword");
+var showPasswordImage = document.getElementById("showpassword1");
+var hidePasswordImage = document.getElementById("hidepassword1");
+
+showPasswordImage.addEventListener('click', function() {
+    adminpassword.type = "text";
+    showPasswordImage.style.display = "none";
+    hidePasswordImage.style.display = "inline";
+});
+
+hidePasswordImage.addEventListener('click', function() {
+    adminpassword.type = "password";
+    hidePasswordImage.style.display = "none";
+    showPasswordImage.style.display = "inline"; 
+});
+
+document.getElementById("backbtn4").addEventListener('click',function(){
+    var logincontainer1 = document.getElementsByClassName("logincontainer1")[0];
+    var logincontainer5 = document.getElementsByClassName("logincontainer5")[0];
+    var loader5 = document.getElementById("loader5");
+
+    loader5.classList.remove('hide-loader');  // Show the loader
+    logincontainer5.style.pointerEvents = "none";
+    setTimeout(function() {
+    
+    logincontainer5.style.display="none";
+    logincontainer1.style.display="flex";
+    logincontainer1.style.transition = "left 0.5s ease-in-out";
+
+    loader5.classList.add('hide-loader');  
+    logincontainer5.style.pointerEvents = "auto";  
+    },1000);
+})
+
+      
+var firstnamevalue = "";
+var lastnamevalue = "";
+
+document.getElementById("nextButton6").addEventListener('click', function() {
+    var firstname = document.getElementById("f_name").value;
+    var lastname = document.getElementById("l_name").value;
+    var errormsg4 = document.getElementsByClassName("errormsg4")[0];
+    var logincontainer6 = document.getElementsByClassName("logincontainer6")[0];
+    var logincontainer7 = document.getElementsByClassName("logincontainer7")[0];
+    var loader6 = document.getElementById("loader6")
+
+    loader6.classList.remove('hide-loader');  
+    logincontainer6.style.pointerEvents = "none";
+
+    console.log(firstname)
+    console.log(lastname)
+    if (firstname === "" && lastname === "") {
+        errormsg4.innerHTML = "Fields cannot be empty";
+        errormsg4.style.color = "red";
+
+        loader6.classList.add('hide-loader');
+        logincontainer6.style.pointerEvents = "auto";
+        return;
+    } else {
+        
+        firstnamevalue = firstname;
+        lastnamevalue = lastname;
+    setTimeout(() => {
+        logincontainer6.style.display = "none";
+        logincontainer7.style.display = "flex";
+        logincontainer7.style.transition = "left 0.5s ease-in-out";
+        errormsg4.innerHTML = "";
+        // logincontainer7.style.transform = "translateX(-55%)";
+        loader6.classList.add('hide-loader');
+        logincontainer6.style.pointerEvents = "auto";  // Re-enable interactions
+            }, 1000);
+            }   
+    }
+);
+
+
+
+
+document.getElementById("backbtn5").addEventListener('click',function(){
+    var logincontainer6 = document.getElementsByClassName("logincontainer6")[0];
+    var logincontainer5 = document.getElementsByClassName("logincontainer5")[0];
+    var loader6 = document.getElementById("loader6")
+
+    loader6.classList.remove('hide-loader');  
+    logincontainer6.style.pointerEvents = "none";
+
+    setTimeout(() => {
+
+    logincontainer6.style.display="none";
+    logincontainer5.style.display="flex";
+    logincontainer5.style.transition = "left 0.5s ease-in-out";
+
+    loader6.classList.add('hide-loader');
+    logincontainer6.style.pointerEvents = "auto";  // Re-enable interactions
+    }, 1000);
+    
+})
+
+var checkusernameValue =""
+async function checkusername() {
+    var checkusernameInput = document.getElementById("checkusernamevalue").value;
+    var errormsg5 = document.getElementsByClassName("errormsg5")[0];
+    var logincontainer7 = document.getElementsByClassName("logincontainer7")[0];
+    var logincontainer8 = document.getElementsByClassName("logincontainer8")[0];
+
+
+    if (checkusernameInput === "") {
+        errormsg5.innerHTML = "Username cannot be empty.";
+        errormsg5.style.color = "red";
+        return; 
+    }
+    var formdata = new FormData();
+    formdata.append("checkusername",checkusernameInput)
+    var response = await fetch('/check_username_Exist/',{
+        method:"POST",
+        body:formdata,
+    })
+    var result = await response.json();
+    console.log(result.status)
+    if(result.status == "success"){
+        errormsg5.innerHTML="Username Already Exist.Try another";
+        errormsg5.style.color="red";
+        return;
+    }
+    else{
+        errormsg5.innerHTML="Username is Available";
+        errormsg5.style.color="Green";
+        return checkusernameInput;
+        }    
+}
+
+document.getElementById("backbtn6").addEventListener('click',function(){
+    var logincontainer6 = document.getElementsByClassName("logincontainer6")[0];
+    var logincontainer7 = document.getElementsByClassName("logincontainer7")[0];
+    var loader7 = document.getElementById("loader7");
+
+    loader7.classList.remove('hide-loader');  
+    logincontainer7.style.pointerEvents = "none";
+
+    setTimeout(() => {
+    logincontainer7.style.display="none";
+    logincontainer6.style.display="flex";
+    logincontainer6.style.transition = "left 0.5s ease-in-out";
+    
+    loader7.classList.add('hide-loader');
+    logincontainer7.style.pointerEvents = "auto";  // Re-enable interactions
+    }, 1000);
+})
+
+document.getElementById("nextButton7").addEventListener('click',function(){
+    var logincontainer7 = document.getElementsByClassName("logincontainer7")[0];
+    var logincontainer8 = document.getElementsByClassName("logincontainer8")[0];
+    var errormsg5 = document.getElementsByClassName("errormsg5")[0];
+    var checkusernamevalue = document.getElementById("checkusernamevalue").value;
+    var loader7 = document.getElementById("loader7");
+
+    loader7.classList.remove('hide-loader');  
+    logincontainer7.style.pointerEvents = "none";
+
+    if(checkusernamevalue === ""){
+        setTimeout(()=>{
+        errormsg5.innerHTML ="Field should not be empty";
+        errormsg5.style.color="red";
+        loader7.classList.add('hide-loader');
+        logincontainer7.style.pointerEvents = "auto";
+    },1000)
+        return;
+   
+    }
+    fetch('/usernamecheckvalue/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value 
+        },
+        body: JSON.stringify({ username: checkusernamevalue })
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        if (data.status === 'exists') {
+           
+            setTimeout(()=>{
+            errormsg5.innerHTML = "Username already exists";
+            errormsg5.style.color = "red";
+            loader7.classList.add('hide-loader');
+            logincontainer7.style.pointerEvents = "auto";
+            },1000)
+            return; 
+        
+        } 
+        
+        else if (data.status === 'not_exists') {
+            setTimeout(() => {
+            logincontainer7.style.display = "none";
+            logincontainer8.style.display = "flex";
+            logincontainer8.style.transition = "left 0.5s ease-in-out";
+            errormsg5.innerHTML = "";
+            
+            loader7.classList.add('hide-loader');
+            logincontainer7.style.pointerEvents = "auto";  // Re-enable interactions
+            }, 1000);
+        } else {
+          
+            errormsg5.innerHTML = "Unexpected error occurred";
+            errormsg5.style.color = "red";
+        }
+    })
+    .catch(error => {
+        console.error('Error checking username:', error);
+        errormsg5.innerHTML = "Error checking username";
+        errormsg5.style.color = "red";
+    });
+    
+    
+});
+
+
+var checkemployeeidvalue =""
+async function checkempid() {
+    // event.preventDefault();
+    var checkemployeeid = document.getElementById("checkemployeeid").value;
+    var errormsg6 = document.getElementsByClassName("errormsg6")[0];
+    
+    console.log(checkemployeeid)
+    if (checkemployeeid === "") {
+        errormsg6.innerHTML = "employee id cannot be empty.";
+        errormsg6.style.color = "red";
+        return; 
+    }
+    var formdata = new FormData();
+    formdata.append("checkemp_id",checkemployeeid)
+    var response = await fetch('/check_checkempid_Exist/',{
+        method:"POST",
+        body:formdata,
+    })
+    var result = await response.json();
+    console.log(result.status)
+    if(result.status == "success"){
+        errormsg6.innerHTML="Employee Id Already Exist.Try another";
+        errormsg6.style.color="red";
+        return;
+    }
+
+    else{
+        errormsg6.innerHTML="Employee Id is Available";
+        errormsg6.style.color="Green";
+        return checkemployeeid;
+    }    
+};
+
+document.getElementById("nextButton8").addEventListener('click',function(){
+    var logincontainer8 = document.getElementsByClassName("logincontainer8")[0];
+    var logincontainer9 = document.getElementsByClassName("logincontainer9")[0];
+    var errormsg6 = document.getElementsByClassName("errormsg6")[0];
+    var checkemployeeid = document.getElementById("checkemployeeid").value;
+    var loader8 = document.getElementById("loader8");
+
+    loader8.classList.remove('hide-loader');  
+    logincontainer8.style.pointerEvents = "none";
+
+    if(checkemployeeid === ""){
+        setTimeout(()=>{
+        errormsg6.innerHTML ="Field should not be empty";
+        errormsg6.style.color="red";
+        loader8.classList.add('hide-loader');
+        logincontainer8.style.pointerEvents = "auto"; 
+    },1000)
+        return;
+    }
+    fetch('/employeeidcheck/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value 
+        },
+        body: JSON.stringify({ employeeid: checkemployeeid })
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        if (data.status === 'exists') {
+            setTimeout(()=>{
+            errormsg6.innerHTML = "employeeId already exists";
+            errormsg6.style.color = "red";
+
+            loader8.classList.add('hide-loader');
+            logincontainer8.style.pointerEvents = "auto";
+        },1000)
+            return; 
+        } else if (data.status === 'not_exists') {
+            setTimeout(() => {
+            logincontainer8.style.display = "none";
+            logincontainer9.style.display = "flex";
+            logincontainer9.style.transition = "left 0.5s ease-in-out";
+            errormsg6.innerHTML = "";
+            loader8.classList.add('hide-loader');
+            logincontainer8.style.pointerEvents = "auto";  // Re-enable interactions
+            }, 1000);
+        } else {
+          
+            errormsg6.innerHTML = "Unexpected error occurred";
+            errormsg6.style.color = "red";
+        }
+    })
+    .catch(error => {
+        console.error('Error checking employeeid:', error);
+        errormsg6.innerHTML = "Error checking employeeid";
+        errormsg6.style.color = "red";
+    });
+});
+    
+       
+
+
+ document.getElementById("backbtn7").addEventListener('click',function(){
+    var logincontainer8 = document.getElementsByClassName("logincontainer8")[0];
+    var logincontainer7 = document.getElementsByClassName("logincontainer7")[0];
+    var loader8 = document.getElementById("loader8");
+
+    loader8.classList.remove('hide-loader');  
+    logincontainer8.style.pointerEvents = "none";
+
+    setTimeout(() => {
+    logincontainer8.style.display="none";
+    logincontainer7.style.display="flex";
+    logincontainer7.style.transition = "left 0.5s ease-in-out";
+
+    loader8.classList.add('hide-loader');
+    logincontainer8.style.pointerEvents = "auto";  // Re-enable interactions
+    }, 1000);
+ });
+
+var password1 = ""
+var password2 = ""
+
+async function passwordcheck() {
+    var pwd = document.getElementById("pwd").value;
+    var cpwd = document.getElementById("cpwd").value;
+    var errormsg7 = document.getElementsByClassName("errormsg7")[0];
+    var username1 = await checkusername(); 
+    var checkempid1 = await checkempid(); 
+    var logincontainer1 = document.getElementsByClassName("logincontainer1")[0];
+    var logincontainer9 = document.getElementsByClassName("logincontainer9")[0];
+    var nextButton9 = document.getElementById("nextButton9");
+    var loader9 = document.getElementById("loader9");
+
+    loader9.classList.remove('hide-loader');  
+    logincontainer9.style.pointerEvents = "none";
+
+    console.log("Username from checkusername: ", username1);
+    if (username1 === "") {
+        return;  
+    }
+    if (checkempid1 === "") {
+        return;  
+    }
+
+    console.log(firstnamevalue)  
+    if (pwd === "" && cpwd === "") {
+        setTimeout(()=>{
+        errormsg7.innerHTML = "Fields cannot be empty";
+        errormsg7.style.color = "red";
+
+        loader9.classList.add('hide-loader');
+        logincontainer9.style.pointerEvents = "auto";
+    },1000)
+        return;
+    }
+    if (pwd !== cpwd) {
+        setTimeout(()=>{
+        errormsg7.innerHTML = "password mismatch";
+        errormsg7.style.color = "red";
+        loader9.classList.add('hide-loader');
+        logincontainer9.style.pointerEvents = "auto";
+    },1000)
+    return;
+    } else {
+        var formdata = new FormData();
+        formdata.append('firstname', firstnamevalue);  
+        formdata.append('lastname', lastnamevalue);    
+        formdata.append('usernamevalue', username1);
+        formdata.append('checkempid1', checkempid1);
+        formdata.append('password1', pwd);
+
+        console.log(firstnamevalue) 
+
+        var response = await fetch('/savedata/', {
+            method: "POST",
+            body: formdata,
+        });
+        var result = await response.json();
+        if (result.status == "success") {
+            alert("Data added successfully");
+            setTimeout(() => {
+            
+            logincontainer9.style.display="none";
+            logincontainer1.style.display="flex";
+            logincontainer1.style.transition = "left 0.5s ease-in-out";
+            loader9.classList.add('hide-loader');
+            logincontainer9.style.pointerEvents = "auto";
+            }, 1000);
+        } else {
+            setTimeout(() => {
+                errormsg7.innerHTML = "Invalid request";
+                loader9.classList.add('hide-loader');
+                logincontainer9.style.pointerEvents = "auto";
+            }, 1000);
+        }
+    }
+};
+
+// 
+// Function to fetch all usernames and employee_ids
+// async function fetchUsernamesAndIds() {
+//     const response = await fetch('/fetch_usernames_and_ids/');
+//     const data = await response.json();
+
+//     if (data.status === "success") {
+//         return data.data;  
+//     } else {
+//         alert("Error fetching data");
+//         return [];
+//     }
+// }
+
+function displayUsernamesAndIds() {
+    const usernamesListElement = document.getElementById('usernames-list');
+    
+    // Add click event listeners to each user-item dynamically
+    usernamesListElement.querySelectorAll('.user-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const employee_id = item.getAttribute('data-employee-id');  // Get employee_id from data attribute
+            
+            // Store the employee_id in sessionStorage
+            sessionStorage.setItem('employee_id', employee_id);
+            
+            // Hide logincontainer10 and show logincontainer11
+            document.querySelector('.logincontainer10').style.display = 'none';
+            document.querySelector('.logincontainer11').style.display = 'flex';
+        });
+    });
+}
+
+// Call this function when the page is ready
+document.addEventListener('DOMContentLoaded', function () {
+    displayUsernamesAndIds();
+});
+
+
+
+// Function to check the password when Next is clicked
+// Function to check the password when Next is clicked
+async function fpwdcheck() {
+    const fpassword = document.getElementById('fpassword').value;
+    const errormsg8 = document.getElementsByClassName('errormsg8')[0];
+
+    // Get the employee_id from sessionStorage
+    const employee_id = sessionStorage.getItem('employee_id');
+    
+    if (!employee_id) {
+        errormsg8.innerHTML = "No user selected. Please select a user.";
+        errormsg8.style.color = "red";
+        return;
+    }
+
+    // Check if password is entered
+    if (!fpassword) {
+        errormsg8.innerHTML = "Password is required.";
+        errormsg8.style.color = "red";
+        return;
+    }
+
+    // Prepare the data to send to the backend
+    const formData = new FormData();
+    formData.append('employee_id', employee_id); // Pass the employee_id
+    formData.append('fpassword', fpassword); // Pass the entered password
+
+    // Make the request to check the password
+    const response = await fetch('/check_fpassword/', {
+        method: 'POST',
+        body: formData,
+    });
+    const result = await response.json();
+
+    // Handle the response
+    if (result.status === "success") {
+        // Redirect to the dashboard if the password is correct
+        window.location.href = "/dashboard/";  // Redirect to your dashboard page
+    } else {
+        errormsg8.innerHTML = result.message || "Invalid password.";
+        errormsg8.style.color = "red";
+    }
+}
+
+
+
+
+
+// document.getElementById("createnewac").addEventListener('click',function(){
+//     var logincontainer3 = document.getElementsByClassName("logincontainer3")[0];
+//     var logincontainer5 = document.getElementsByClassName("logincontainer5")[0];
+//     var loader3 = document.getElementById("loader3");
+
+//     loader3.classList.remove('hide-loader');  
+//     logincontainer3.style.pointerEvents = "none";
+
+//     setTimeout(()=>{
+//     logincontainer3.style.display="none";
+//     logincontainer5.style.display="flex";
+//     logincontainer5.style.transition = "left 0.5s ease-in-out";
+//     loader3.classList.add('hide-loader');
+//     logincontainer3.style.pointerEvents = "auto";  // Re-enable interactions
+//     }, 1000);
+// });
+
+window.addEventListener("load",()=>{
+    const loader = document.querySelector(".loader");
+    loader.classList.add("loader-hidden");
+    loader.addEventListener('transitionend',()=>{
+        document.body.removeChild("loader");
+    })
+})
+
+function backbtn8(){
+    var logincontainer9 = document.getElementsByClassName("logincontainer9")[0];
+    var logincontainer8 = document.getElementsByClassName("logincontainer8")[0];
+    var loader9 = document.getElementById("loader9");
+
+    loader9.classList.remove('hide-loader');  
+    logincontainer9.style.pointerEvents = "none";
+
+    setTimeout(()=>{
+    logincontainer9.style.display="none";
+    logincontainer8.style.display="flex";
+    logincontainer8.style.transition = "left 0.5s ease-in-out";
+
+    loader9.classList.add('hide-loader');
+    logincontainer9.style.pointerEvents = "auto";  // Re-enable interactions
+    }, 1000);
+ }
+
+ document.getElementById("backbtn9").addEventListener('click',function(){
+    var logincontainer11 = document.getElementsByClassName("logincontainer11")[0];
+    var logincontainer10 = document.getElementsByClassName("logincontainer10")[0];
+    var loader11 = document.getElementById("loader11");
+
+    loader11.classList.remove('hide-loader');  
+    logincontainer11.style.pointerEvents = "none";
+
+    setTimeout(()=>{
+    logincontainer11.style.display="none";
+    logincontainer10.style.display="flex";
+    logincontainer10.style.transition = "left 0.5s ease-in-out";
+
+    loader11.classList.add('hide-loader');
+    logincontainer11.style.pointerEvents = "auto";  // Re-enable interactions
+    }, 1000);
+ });
+
+ var fpassword = document.getElementById("fpassword");
+var showpwd = document.getElementById("showpwd");
+var hidepwd = document.getElementById("hidepwd");
+
+showpwd.addEventListener('click', function() {
+    fpassword.type = "text";
+    showpwd.style.display = "none";
+    hidepwd.style.display = "inline";
+});
+
+hidepwd.addEventListener('click', function() {
+    fpassword.type = "password";
+    showpwd.style.display = "none";
+    hidepwd.style.display = "inline"; 
+});
+
+// Function to filter the usernames based on search input
+function filterUsernames() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();  // Get the search value and convert to lowercase
+    const usernamesListElement = document.getElementById('usernames-list');  // Get the container where usernames are displayed
+    const userItems = usernamesListElement.getElementsByClassName('user-item');  // Get all user-item elements
+
+    // Loop through each user-item and check if it matches the search input
+    Array.from(userItems).forEach(function(userItem) {
+        const usernameText = userItem.querySelector('h2').textContent.toLowerCase();  // Get the username text from the h2 tag
+
+        // If username matches the search input, display it; otherwise, hide it
+        if (usernameText.includes(searchInput)) {
+            userItem.style.display = '';  // Show the user-item if it matches
+        } else {
+            userItem.style.display = 'none';  // Hide the user-item if it does not match
+        }
+    });
+};
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Main login selector
+    document.getElementById("loginSelect").addEventListener('change', function() {
+        var selectedValue = this.value;
+        var logincontainer10 = document.getElementsByClassName("logincontainer10")[0];
+        var logincontainer1 = document.getElementsByClassName("logincontainer1")[0];
+        
+        if (selectedValue === 'Portal Login') {
+            logincontainer1.style.display = "flex";
+            logincontainer10.style.display = "none";
+        } else if (selectedValue === 'R12 Login') {
+            logincontainer1.style.display = "none";
+            logincontainer10.style.display = "flex";
+        }
+    });
+});
+
+function updateDropdownValue() {
+    var logincontainer10 = document.getElementsByClassName("logincontainer10")[0];
+    var logincontainer1 = document.getElementsByClassName("logincontainer1")[0];
+
+    // If the logincontainer10 (R12 Login) is visible, update the dropdown to R12 Login
+    if (logincontainer10.style.display === "flex") {
+        document.getElementById("loginSelect1").value = "R12 Login";
+    }
+    // If logincontainer1 (Portal Login) is visible, update the dropdown to Portal Login
+    else if (logincontainer1.style.display === "flex") {
+        document.getElementById("loginSelect1").value = "Portal Login";
+    }
+}
+
+updateDropdownValue();
+
+document.getElementById("loginSelect1").addEventListener('change', function() {
+    var selectedValue = this.value;
+
+    var logincontainer10 = document.getElementsByClassName("logincontainer10")[0];
+    var logincontainer1 = document.getElementsByClassName("logincontainer1")[0];
+
+    if (selectedValue === 'R12 Login') {
+        logincontainer1.style.display = "none";
+        logincontainer10.style.display = "flex";
+    } else if (selectedValue === 'Portal Login') {
+        logincontainer1.style.display = "flex";
+        logincontainer10.style.display = "none"; 
+    }
+   
+
+});
+
+
+
+</script>
+</body>
+</html> 
