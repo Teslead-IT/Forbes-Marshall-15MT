@@ -6,6 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FM_ARCA</title>
     <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+    <style>
+        .left-container{
+    background-color: #363434;
+    height: 100vh;
+    width: 16.7vw;
+}
+
+#poweredby{
+    color: #040D52;
+    text-align: center;
+    margin-top: 95%;
+    font-size: 12px;
+}
+#below_poweredby{
+    margin-top: -12px;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+.div{
+    margin-top: 50px;
+}
+.menu li {
+    display: flex;
+    align-items: center; 
+    padding: 10px 0;
+    width: 80%;  
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    height: 20%;
+    /* border-radius: 20px; */
+}
+.menu li:hover {
+    background: #D9D9D9;
+    background: linear-gradient(90deg,rgba(217, 217, 217, 1) 0%, rgba(54, 52, 52, 1) 100%);
+    color: white;
+    /* border-radius: 20px; */
+    width: 80%;
+    cursor: pointer;
+    transition: 0.5s;
+    height: 20%;
+}
+.menu li.active {
+    background: linear-gradient(90deg,rgba(217, 217, 217, 1) 0%, rgba(54, 52, 52, 1) 100%);
+}
+    </style>
 </head>
 <body>
     <div class="container">
@@ -15,12 +60,19 @@
                 <ul class="menu">
                     <li id="dashboard" class="dashboardlist" onclick='navigateTo("/dashboard")'><img src="{% static 'image/dashboard.svg' %}" alt="" class="dashboard">Dashboard</li>
                     <li  id="tasks" onclick='navigateTo("/tasks")'><img src="{% static 'image/tasks.svg' %}" alt="" class="Tasks">Tasks</li>
-                    <li  id="resourcemgnt" onclick='navigateTo("/resourcemgntnew")'><img src="{% static 'image/resourcemgnt.svg' %}" alt="" class="resourcemgnt">Resource mgnt</li>
+                    <li  id="resourcemgnt" onclick='navigateTo("/resourcemgnt")'><img src="{% static 'image/resourcemgnt.svg' %}" alt="" class="resourcemgnt">Resource mgnt</li>
                     <li  id="recentlogin" onclick='navigateTo("/recentlogin")'><img src="{% static 'image/recent login.svg' %}" alt="" class="Recent">Recent login</li>
                     <li  id="users" onclick='navigateTo("/users")'><img src="{% static 'image/users.svg' %}" alt="" class="Users">Users</li>
                     <li  id="settings" onclick='navigateTo("/settings")'><img src="{% static 'image/settings.svg' %}" alt="" class="Settings">Settings</li>
                 </ul>      
             </div>
+
+            <div class="div">
+                <!-- <img src="{% static 'image/small triangle.png' %}" alt="" id="smalltriangle">
+                <h5 id="nameonimage">TESLEAD SMARTSYNC X</h5> -->
+                <h4 id="poweredby">Powered By</h4>
+                <h4 id="below_poweredby">Teslead Equipments Private Limited</h4>
+                </div>
         </div>
         <div id="setting-content"class="col-9 main-content" >
             <div class="main-content">
@@ -383,8 +435,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const activeTabElement = document.getElementById(activeTabId);
         if (activeTabElement) {
             activeTabElement.classList.add('active');
-            activeTabElement.style.backgroundColor="white";
-            activeTabElement.style.color="orange";
+            activeTabElement.style.backgroundColor="linear-gradient(90deg,rgba(217, 217, 217, 1) 0%, rgba(54, 52, 52, 1) 100%);";
+            activeTabElement.style.color="white";
             activeTabElement.querySelector('img').style.backgroundColor = "#F78F25";
         }
     }

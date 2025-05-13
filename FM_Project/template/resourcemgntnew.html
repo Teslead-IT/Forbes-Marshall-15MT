@@ -7,7 +7,227 @@
     <title>Resource management</title>
     <link rel="stylesheet" href="{% static 'css/resourcemgnt.css' %}">
     <meta name="csrf-token" content="{{ csrf_token }}">
-   
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+   <script src="https://kit.fontawesome.com/ae8d3215c8.js" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+   .heading button{
+        margin-top: -25px;
+        width: 80px;
+        margin-left: 90%;
+        background-color: #040D52;
+        color: white;
+        border: none;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+}
+.heading button:hover{
+    background-color: #040D52;
+}
+ #editvalve{
+    background-color: #040D52;
+    color: white;
+ }
+ #actuatoredit{
+    background-color: #040D52;
+    color: white;
+ }
+#unitedit{
+    background-color: #040D52;
+    color: white;
+ }
+#insidecontainer6{
+    margin-left: 50px;
+}
+
+.arrow7{
+    margin-left: 15%;
+    margin-top: 7%;  
+}
+.actuatorid,.actuatorname,.actuatordesc{
+    width: 20px;
+}
+#productedit{
+    background-color: #040D52;
+    color: white;
+    width: 100px;
+    height: 30px;
+    padding: 5px 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+#deleteicon_table{
+    background-color: red;
+    color: white;
+    width: 120px;
+    height: 30px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.table thead th{
+    background-color: #040D52;
+    color: white;
+}
+.add-table{
+    width: 75vw;
+    height: 120vh;
+    background-color: white;
+    position: absolute;
+    margin-top: -12%;
+    margin-left: -2px;
+}
+.first-box label{
+    font-size: 15px;
+}
+.btn-div{
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 40%;
+    width: 20vw;
+    display: flex;
+    gap: 20px;
+}
+#savebtn{
+    background-color: #040D52;
+    color: white;
+    margin-left: 12%;
+}
+#cancelbtn{
+    background-color: red;
+    color: white;
+    margin-left: 15%;
+}
+#hydro{
+    margin-top: 40px;
+}
+
+#bubbleseat{
+    margin-top: 40px;
+}
+.update-table{
+    width: 75vw;
+    height: 120vh;
+    background-color: white;
+    position: absolute;
+    margin-top: -22%;
+    margin-left: -2px;
+}
+.first-box label{
+    width: 12vw;
+}
+#bubbleupdate{
+    position: absolute;
+    margin-top: 3%;
+}
+#hydroupdate{
+    margin-top: 6%;
+}
+.hydroseatupdate{
+    margin-top: 6%;
+}
+.first-box1{
+    color: #756464;
+    width: 37vw;
+    height: 25vh;
+    background-color: white;  
+}
+
+.first-box1 input{
+    width: 40%;
+    height: 4vh;
+    border: none;
+    border-radius: 5px;
+    background-color: #EDE8E8;
+}
+.hydro{
+    margin-top: 3%;
+}
+
+.btn-div1{
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 40%;
+    display: flex;
+}
+.btn-div1 button{
+    width: 7vw;
+    height: 4vh;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-div{
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 40%;
+}
+.btn-div button{
+    width: 7vw;
+    height: 4vh;
+    border: none;
+    border-radius: 5px;
+}
+
+#logout{
+        background-color:#040D52;
+        width: 100px;
+        height: 30px;
+        margin-left: 50px;
+        margin-top: 10px;
+    }
+    .left-container{
+    background-color: #363434;
+    height: 100vh;
+    width: 16.7vw;
+}
+
+#poweredby{
+    color: #040D52;
+    text-align: center;
+    margin-top: 95%;
+    font-size: 12px;
+}
+#below_poweredby{
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    margin-top: -5px;
+}
+.div{
+    margin-top: 50px;
+}
+.menu li {
+    display: flex;
+    align-items: center; 
+    padding: 10px 0;
+    width: 80%;  
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    height: 20%;
+    border-radius: 20px;
+}
+.menu li:hover {
+    background: #D9D9D9;
+    background: linear-gradient(90deg,rgba(217, 217, 217, 1) 0%, rgba(54, 52, 52, 1) 100%);
+    color: white;
+    border-radius: 20px;
+    width: 80%;
+    cursor: pointer;
+    transition: 0.5s;
+    height: 20%;
+}
+.menu li.active {
+    background: linear-gradient(90deg,rgba(217, 217, 217, 1) 0%, rgba(54, 52, 52, 1) 100%);
+}
+#unitbtn{
+    background-color: #040D52;
+}
+
+
+</style>
 </head>
 <body>
     <div class="main-container">
@@ -16,13 +236,19 @@
                 <img src="{% static 'image/image 5.png' %}" alt="">
                 <div class="list-items">
                     <ul class="menu">
-                        <li id="dashboard" class="dashboardlist" onclick='navigateTo("/dashboard")'><img src="{% static 'image/dashboard.svg' %}" alt="" class="dashboard">Dashboard</li>
-                        <li  id="tasks" onclick='navigateTo("/tasks")'><img src="{% static 'image/tasks.svg' %}" alt="" class="Tasks">Tasks</li>
-                        <li  id="resourcemgnt" onclick='navigateTo("/resourcemgntnew")'><img src="{% static 'image/resourcemgnt.svg' %}" alt="" class="resourcemgnt">Resource mgnt</li>
-                        <li  id="recentlogin" onclick='navigateTo("/recentlogin")'><img src="{% static 'image/recent login.svg' %}" alt="" class="Recent">Recent login</li>
-                        <li  id="users" onclick='navigateTo("/users")'><img src="{% static 'image/users.svg' %}" alt="" class="Users">Users</li>
-                        <li  id="settings" onclick='navigateTo("/settings")'><img src="{% static 'image/settings.svg' %}" alt="" class="Settings">Settings</li>
-                    </ul>     
+                            <li id="dashboard" class="dashboardlist" onclick='navigateTo("/dashboard")'><img src="{% static 'image/dashboard.svg' %}" alt="" class="dashboard">Dashboard</li>
+                            <li  id="tasks" onclick='navigateTo("/tasks")'><img src="{% static 'image/tasks.svg' %}" alt="" class="Tasks">Tasks</li>
+                            <li  id="resourcemgnt" onclick='navigateTo("/resourcemgnt")'><img src="{% static 'image/resourcemgnt.svg' %}" alt="" class="resourcemgnt">Resource mgnt</li>
+                            <li  id="recentlogin" onclick='navigateTo("/recentlogin")'><img src="{% static 'image/recent login.svg' %}" alt="" class="Recent">Recent login</li>
+                            <li  id="users" onclick='navigateTo("/users")'><img src="{% static 'image/users.svg' %}" alt="" class="Users">Users</li>
+                            <li  id="settings" onclick='navigateTo("/settings")'><img src="{% static 'image/settings.svg' %}" alt="" class="Settings">Settings</li>
+                        </ul>    
+                </div>
+                <div class="div">
+                <!-- <img src="{% static 'image/small triangle.png' %}" alt="" id="smalltriangle">
+                <h5 id="nameonimage">TESLEAD SMARTSYNC X</h5> -->
+                <h4 id="poweredby">Powered By</h4>
+                <h4 id="below_poweredby">Teslead Equipments Private Limited</h4>
                 </div>
             </div>
             <div class="right">
@@ -52,11 +278,13 @@
                 <div class="inside-container hidden">
                     <div class="heading">
                         <h5>Manage Valve Size</h5>
-                        <button id="addvalve">Add</button>
+                        <!-- <button id="addvalve">Add</button> -->
+                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addsize">ADD</button>
                         <h6>Create and assign a values to the valve size</h6>
                     </div>
                     <div class="table-container">
-                        <table border="1" class="table1">
+                        <!-- <table border="1" class="table1"> -->
+                        <table class="table table-striped table-hover table-bordered">
                          <thead>
                                 <th>VALVE SIZE ID</th>
                                 <th>VALVE SIZE NAME</th>
@@ -70,29 +298,56 @@
                                     <td>{{item.sizeid}}</td>
                                     <td>{{item.sizename}}</td>
                                     <td>{{item.sizedesc}}</td>
-                                    <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon" onclick="editvalvesizeitem(event)" data-id="{{item.sizeid}}"></td>
-                                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon"  onclick="deletevalvesize(event)" data-id="{{item.sizeid}}"></td>
+                                    <!-- <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon" onclick="editvalvesizeitem(event)" data-id="{{item.sizeid}}"></td> -->
+                                     <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="editvalvesizeitem(event)" data-id="{{item.sizeid}}" id="edit"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</button></td>
+                                     <td><button type="button" class="btn btn-danger delete-btn" data-bs-toggle="modal" onclick="deletevalvesize(event)" data-id="{{item.sizeid}}"><i class="fa-solid fa-trash"></i>&nbsp;Delete</button></td>
+                                    <!-- <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon"  onclick="deletevalvesize(event)" data-id="{{item.sizeid}}"></td> -->
                                 </tr>
                                 {% endfor %}
                         </tbody>
                     </table>
-                    <div class="adddata hidden">
-                        <div class="col-8">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Add Valve Size</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>VALVE SIZE ID</label>
+                                <input type="text" name="" id="one"><br><br>
+                                <label>VALVE SIZE NAME</label>
+                                <input type="text" name="" id="two"><br><br>
+                                <label>VALVE SIZE DESCRIPTION</label>
+                                <input type="text" name="" id="three">                                
+                                </div>
+                                 
+                            </div>
+                            <div class="alert alert-danger alertbox1 hidden" role="alert" id="alert1"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="savecancel">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="save_valve_size()" id="savenew">Save</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- delete valve size -->
+                    
+                    <!-- <div class="adddata hidden">
+                        <div class="addvalve">
                             <div class="sub-head">
                                 <h4>Add Valve Size</h4>
                                 <h6>Create and assign a values to the valve size</h6>
                             </div>
-                            <div class="small-table">
+                            <div class="small-table1">
                                 <label>VALVE SIZE ID</label>
                                 <input type="text" name="" id="one"><br><br>
                                 <label>VALVE SIZE NAME</label>
                                 <input type="text" name="" id="two"><br><br>
                                 <label>VALVE SIZE DESCRIPTION</label>
                                 <input type="text" name="" id="three">
-                                <!-- <button onclick="save_valve_size()">save</button>
-                                <button>cancel</button> -->
-                                <!-- <button>save</button> -->
-                                <!-- <input type="hidden" id="valvesize">  -->
                                 <h5 class="errormsg1"></h5>
                                 <div class="col-4">
                                     <button id="savebtn" onclick="save_valve_size()">SAVE</button>
@@ -102,15 +357,59 @@
                             </div>
                         </div>
                         
-                    </div>
+                    </div> -->
                     </div>
                     
                 </div>
-
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Valve Size</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are You want to Delete Valve Size?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger confirm-delete-btn">Delete</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
 
                 <!-- div for update -->
 
-                <div class="updatedata hidden">
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Edit Valve Size</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>VALVE SIZE ID</label>
+                                <input type="text" name="" id="updateone"><br><br>
+                                <label>VALVE SIZE NAME</label>
+                                <input type="text" name="" id="updatetwo"><br><br>
+                                <label>VALVE SIZE DESCRIPTION</label>
+                                <input type="text" name="" id="updatethree">
+                                <h5 class="errormsg1"></h5>
+                                
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="updatecancel">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="updateedit()" id="updatebtn">Update</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- <div class="updatedata hidden">
                     <div class="col-8">
                         <div class="sub-head">
                             <h4>Edit Valve Size</h4>
@@ -127,18 +426,16 @@
                             <button onclick="updateedit()" id="updatebtn">Update</button>
                             <button id="updatecancel">cancel</button>
                             </div>
-                            <!-- <button>save</button> -->
-                            <!-- <input type="hidden" id="valvesize">  -->
+                             
                             <h5 class="errormsg1"></h5>
                             <div class="col-4">
-                                <!-- <button id="savebtn">SAVE</button>
-                                <button id="cancelbtn">CANCEL</button> -->
+                               
                                 
                             </div>
                         </div>
                     </div>
                     
-                </div>
+                </div> -->
 
                 <!--  second item-->
 
@@ -148,11 +445,12 @@
                 <div class="inside-container hidden" id="insidecontainer2">
                     <div class="heading">
                         <h5>Manage Valve Class</h5>
-                        <button id="addclass">Add</button>
+                        <!-- <button id="addclass">Add</button> -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3" id="addclass">ADD</button>
                         <h6>Create and assign a values to the valve class</h6>
                     </div>
                     <div class="table-container">
-                        <table border="1"  class="table2">
+                        <table class="table table-striped table-hover table-bordered" id="table2">
                             <thead>
                                 <th>VALVE CLASS ID</th>
                                 <th>VALVE CLASS NAME</th>
@@ -166,14 +464,42 @@
                                     <td>{{data.classid}}</td>
                                     <td>{{data.classname}}</td>
                                     <td>{{data.classdesc}}</td>
-                                    <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon2" onclick="editvalveclass(event)" data-id="{{data.classid}}"></td>
-                                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon2" onclick="deletevalveclass(event)" data-id="{{data.classid}}"></td>
-                            
+                                    <!-- <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon2" onclick="editvalveclass(event)" data-id="{{data.classid}}"></td>
+                                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon2" onclick="deletevalveclass(event)" data-id="{{data.classid}}"></td> -->
+                                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4" onclick="editvalveclass(event)" data-id="{{data.classid}}" id="edit">Edit</button></td>
+                                    <td><button type="button" class="btn btn-danger delete-btn1" data-bs-toggle="modal" onclick="deletevalveclass(event)" data-id="{{data.classid}}">Delete</button></td>
                                 </tr> 
                                 {% endfor %}
                             </tbody>
                     </table>
-                    <div class="adddata1 hidden" id="adddata1">
+                    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Add Valve Class</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                 <label>VALVE CLASS ID</label>
+                                <input type="text" name="" id="one" class="classid"><br><br>
+                                <label>VALVE CLASS NAME</label>
+                                <input type="text" name="" id="two" class="classname"><br><br>
+                                <label>VALVE CLASS DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="classdes">                                
+                                </div>
+                                 
+                            </div>
+                            <div class="alert alert-danger alertbox2 hidden" role="alert" id="alert2"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger cancelclass" data-bs-dismiss="modal" id="savecancel">Cancel</button>
+                                <button type="button" class="btn btn-primary " onclick="saveclass()" id="savenew">Save</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="adddata1 hidden" id="adddata1">
                         <div class="col-88">
                             <div class="sub-head">
                                 <h4>Add Valve Class</h4>
@@ -194,12 +520,41 @@
                             <button id="btn2" class="cancelclass">CANCEL</button>
                             
                         </div>
-                    </div>
+                    </div> -->
                     </div>
                     
                 </div><br>
 
-                <div class="adddata11 hidden" id="adddata1">
+                <!-- //edit valve class // -->
+
+                <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Edit Valve Class</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>VALVE CLASS ID</label>
+                                <input type="text" name="" id="one" class="updateclassid"><br><br>
+                                <label>VALVE CLASS NAME</label>
+                                <input type="text" name="" id="two" class="updateclassname"><br><br>
+                                <label>VALVE CLASS DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="updateclassdes">
+                                
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="updatecancel">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="updateclass()" id="updatebtn">Update</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- <div class="adddata11 hidden" id="adddata1">
                     <div class="col-88">
                         <div class="sub-head">
                             <h4>Edit Valve Class</h4>
@@ -220,8 +575,25 @@
                         <button id="btn2" class="cancelclass" onclick="cancelupdate()">CANCEL</button>
                         
                     </div>
-                </div>
+                </div> -->
                 
+                <div class="modal fade" id="exampleModal_deleteclass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Valve Class</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are You want to Delete Valve Class?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger confirm-delete-btn1">Delete</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                  <!-- 3rd item -->
 
                 <div class="arrow3 hidden">
@@ -230,11 +602,12 @@
                 <div class="inside-container hidden" id="insidecontainer3">
                     <div class="heading">
                         <h5>Manage Valve Type</h5>
-                        <button id="addvalvetype">Add</button>
+                        <!-- <button id="addvalvetype">Add</button> -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModaltype" id="addtype">ADD</button>
                         <h6>Create and assign a values to the valve type</h6>
                     </div>
                     <div class="table-container">
-                        <table border="1" class="table3"  id="classtypeTable">
+                        <table class="table table-striped table-hover table-bordered" id="table3">
                          <thead>
                                 <th>VALVE TYPE ID</th>
                                 <th>VALVE TYPE NAME</th>
@@ -248,13 +621,15 @@
                                     <td>{{datas.typeid}}</td>
                                     <td>{{datas.typename}}</td>
                                     <td>{{datas.typedesc}}</td>
-                                    <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_valve" onclick="editvalvetype(event)" data-id="{{datas.typeid}}"></td>
-                                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_valve" onclick="deletevalvetype(event)" data-id="{{datas.typeid}}"></td>
+                                    <!-- <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_valve" onclick="editvalvetype(event)" data-id="{{datas.typeid}}"></td>
+                                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_valve" onclick="deletevalvetype(event)" data-id="{{datas.typeid}}"></td> -->
+                                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModaledittype" onclick="editvalvetype(event)" data-id="{{datas.typeid}}" id="editvalve">Edit</button></td>
+                                    <td><button type="button" class="btn btn-danger delete-btn3" data-bs-toggle="modal" onclick="deletevalvetype(event)" data-id="{{datas.typeid}}">Delete</button></td>
                                 </tr>
                                 {% endfor %}
                         </tbody>
                     </table>
-                    <div class="adddata2 hidden" id="adddata2">
+                    <!-- <div class="adddata2 hidden" id="adddata2">
                         <div class="col-valvetpe">
                             <div class="sub-head">
                                 <h4>Add Valve Type</h4>
@@ -275,12 +650,40 @@
                             <button id="btn2" onclick="cancelclasstype()">CANCEL</button>
                             
                         </div>
-                    </div>
+                    </div> -->
                     </div>
                     
                 </div><br>
 
-                <div class="updatevalvetype hidden" id="adddata2">
+                <div class="modal fade" id="exampleModaltype" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Add Valve Type</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>VALVE TYPE ID</label>
+                                <input type="text" name="" id="one" class="typeid"><br><br>
+                                <label>VALVE TYPE NAME</label>
+                                <input type="text" name="" id="two" class="typename"><br><br>
+                                <label>VALVE TYPE DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="typedesc">                                
+                                </div>
+                                 
+                            </div>
+                            <div class="alert alert-danger alertbox2 hidden" role="alert" id="alert2"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger cancelclass" data-bs-dismiss="modal" id="savecancel">Cancel</button>
+                                <button type="button" class="btn btn-primary " onclick="saveclasstype()" id="savenew">Save</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- <div class="updatevalvetype hidden" id="adddata2">
                     <div class="col-valvetpe">
                         <div class="sub-head">
                             <h4>Edit Valve Type</h4>
@@ -301,7 +704,55 @@
                         <button id="btn2" onclick="cancelclasstype1()">CANCEL</button>
                         
                     </div>
-                </div>
+                </div> -->
+
+                <div class="modal fade" id="exampleModaledittype" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Edit Valve Type</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>VALVE TYPE ID</label>
+                                <input type="text" name="" id="one" class="updatetypeid"><br><br>
+                                <label>VALVE TYPE NAME</label>
+                                <input type="text" name="" id="two" class="updatetypename"><br><br>
+                                <label>VALVE TYPE DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="updatetypedesc">
+                                
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="updateclasstype()" id="updatebtn">Update</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- delete valve type -->
+
+                    <div class="modal fade" id="exampleModal_deletetype" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Valve Type</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are You want to Delete Valve Type?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger confirm-delete-btn2">Delete</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
                 <div class="second-row">
                     <div class="f-container" id="fcontainer1">
                         <h4>PRODUCTS</h4>
@@ -321,7 +772,7 @@
                     <div class="subheading">
                         <h3>Manage Product</h3>
                         <div class="grid-view">
-                            <h4 id="gridview">Grid View | </h4>
+                            <!-- <h4 id="gridview">Grid View | </h4> -->
                             <h4 id="tableview">Table View</h4>
                             <button id="addproduct">Add</button>
                         </div>
@@ -348,7 +799,7 @@
                     </div>
                     
                     <div class="tableview hidden">
-                    <table border="1" class="table4">
+                    <table class="table table-striped table-hover table-bordered table4">
                         <thead>
                             <th>PRODUCT NAME</th>
                             <th>PRODUCT ID</th>
@@ -364,8 +815,8 @@
                                 <td>{{data.row1}}</td>
                                 <td>{{data.row3}}</td>
                                 <td>{{data.row4}}</td>
-                                <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_table" onclick="edittable(event)" data-id ="{{ data.row1 }}"></td>
-                                <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_table" onclick="deletetable(event)" data-id ="{{ data.row1 }}"></td>
+                                <td onclick="edittable(event)" data-id ="{{ data.row1 }}" id="productedit">Edit</td>
+                                <td onclick="deletetable(event)" data-id ="{{ data.row1 }}" id="deleteicon_table" >Delete</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -382,7 +833,7 @@
                         <div class="containerr" id="myform">
                             {% csrf_token %}
                             <div class="col-6" id="left">
-                                <div class="first-box">
+                                <div class="first-box1">
                                     <label>PRODUCT ID</label>
                                     <input type="text" name="" id="input1"><br><br>
                                     <label>PRODUCT NAME</label>
@@ -392,7 +843,7 @@
                                     <label>ACTUATOR TYPE</label>
                                     <input type="text" name="" id="input4"><br><br>
                                 </div><br>
-                                <div class="first-box">
+                                <div class="first-box1">
                                     <h4>AIR SHELL DETAILS</h4>
                                     <hr><br>
                                     <label>SET PRESSURE</label>
@@ -408,11 +859,11 @@
                                     <option>0</option>
                                     <option>1</option>
                                     <option>2</option>
-                                    </select>
+                                    </select><br>
                                     
                                 </div><br><br><br>
-                                <div class="first-box">
-                                    <h4>HYDRO SHELL DETAILS</h4>
+                                <div class="first-box1">
+                                    <h4 id="hydro">HYDRO SHELL DETAILS</h4>
                                     <hr><br>
                                     <label>SET PRESSURE</label>
                                     <input type="text" name="" id="input13"><br><br>
@@ -429,8 +880,8 @@
                                         <option>2</option>
                                         </select><br><br>
                                 </div><br><br><br>
-                                <div class="first-box">
-                                    <h4>BUBBLE SEAT DETAILS</h4>
+                                <div class="first-box1">
+                                    <h4 id="bubbleseat">BUBBLE SEAT DETAILS</h4>
                                     <hr><br>
                                     <label>SET PRESSURE</label>
                                     <input type="text" name="" id="input17"><br><br>
@@ -450,7 +901,7 @@
                                 </div>
                             </div>
                             <div class="col-6" id="right">
-                                <div class="first-box">
+                                <div class="first-box1">
                                     <label>VALVE SIZE</label>
                                     <input type="text" name="" id="input5"><br><br>
                                     <label>VALVE CLASS</label>
@@ -460,7 +911,7 @@
                                     <label>FLANGED TYPE</label>
                                     <input type="text" name="" id="input8"><br><br>
                                 </div><br>
-                                <div class="first-box">
+                                <div class="first-box1">
                                     <h4>AIR SEAT DETAILS</h4>
                                     <hr><br>
                                     <label>SET PRESSURE</label>
@@ -479,8 +930,8 @@
                                         </select>
                                         <br><br>
                                 </div><br><br><br>
-                                <div class="first-box">
-                                    <h4>HYDRO SEAT DETAILS</h4>
+                                <div class="first-box1">
+                                    <h4 id="hydro">HYDRO SEAT DETAILS</h4>
                                     <hr><br>
                                     <label>SET PRESSURE</label>
                                     <input type="text" name="" id="input25"><br><br>
@@ -546,7 +997,7 @@
                                 
                             </div><br><br><br>
                             <div class="first-box">
-                                <h4>HYDRO SHELL DETAILS</h4>
+                                <h4 id="hydroupdate">HYDRO SHELL DETAILS</h4>
                                 <hr><br>
                                 <label>SET PRESSURE</label>
                                 <input type="text" name="" id="updateinput13"><br><br>
@@ -564,7 +1015,7 @@
                                     </select><br><br>
                             </div><br><br><br>
                             <div class="first-box">
-                                <h4>BUBBLE SEAT DETAILS</h4>
+                                <h4 id="bubbleupdate">BUBBLE SEAT DETAILS</h4><br><br>
                                 <hr><br>
                                 <label>SET PRESSURE</label>
                                 <input type="text" name="" id="updateinput17"><br><br>
@@ -614,7 +1065,7 @@
                                     <br><br>
                             </div><br><br><br>
                             <div class="first-box">
-                                <h4>HYDRO SEAT DETAILS</h4>
+                                <h4 class="hydroseatupdate">HYDRO SEAT DETAILS</h4>
                                 <hr><br>
                                 <label>SET PRESSURE</label>
                                 <input type="text" name="" id="updateinput25"><br><br>
@@ -634,7 +1085,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="btn-div">
+                    <div class="btn-div1">
                         <button id="savebtn" class="saveproduct" onclick="saveupdated_product()">UPDATE</button>
                         <button id="cancelbtn" onclick="cancelupdated_product()">CANCEL</button><br><br>
                     </div>
@@ -648,11 +1099,12 @@
                 <div class="inside-container1 hidden" id="insidecontainer4">
                     <div class="heading">
                         <h5>Manage Flanged Type</h5>
-                        <button id="addflanged">Add</button>
+                        <!-- <button id="addflanged">Add</button> -->
+                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalflang" id="addflang">ADD</button>
                         <h6>Create and assign a values to the flanged type</h6>
                     </div>
                     <div class="table-container">
-                        <table border="1" class="table5">
+                        <table class="table table-striped table-hover table-bordered" id="table5">
                          <thead>
                                 <th>FLANGED TYPE ID</th>
                                 <th>FLANGED TYPE NAME</th>
@@ -666,13 +1118,43 @@
                                     <td>{{items.flangedid}}</td>
                                     <td>{{items.flangedname}}</td>
                                     <td>{{items.flangeddesc}}</td>
-                                    <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_flag" onclick="editflangtype(event)" data-id="{{items.flangedid}}"></td>
-                                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_flag" onclick="deleteflangedtype(event)" data-id="{{items.flangedid}}"></td>
+                                    <!-- <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_flag" onclick="editflangtype(event)" data-id="{{items.flangedid}}"></td>
+                                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_flag" onclick="deleteflangedtype(event)" data-id="{{items.flangedid}}"></td> -->
+                                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalflangedit" onclick="editflangtype(event)" data-id="{{items.flangedid}}" id="edit">Edit</button></td>
+                                    <td><button type="button" class="btn btn-danger delete-btnflang" data-bs-toggle="modal" onclick="deleteflangedtype(event)" data-id="{{items.flangedid}}">Delete</button></td>
                                 </tr>
                                 {% endfor %}
                         </tbody>
                     </table>
-                    <div class="adddata3 hidden" id="addflag">
+
+                    <div class="modal fade" id="exampleModalflang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Add Flanged Type</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>FLANGED TYPE ID</label>
+                                <input type="text" name="" id="one" class="flagid"><br><br>
+                                <label>FLANGED TYPE NAME</label>
+                                <input type="text" name="" id="two" class="flagname"><br><br>
+                                <label>FLANGED TYPE DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="flagdesc">                                
+                                </div>
+                                 
+                            </div>
+                            <div class="alert alert-danger alertbox1 hidden" role="alert" id="alert1"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="savecancel">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="saveflangtype()" id="savenew">Save</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="adddata3 hidden" id="addflag">
                         <div class="col-8">
                             <div class="sub-head">
                                 <h4>Add Flanged Type</h4>
@@ -693,12 +1175,42 @@
                             <button id="btn2" onclick="cancelflangedtype()">CANCEL</button>
                             
                         </div>
-                    </div>
+                    </div> -->
                     </div>
                     
                 </div><br>
 
-                <div class="updateflanged hidden" id="addflag">
+                <div class="modal fade" id="exampleModalflangedit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Edit Flanged Type</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>FLANGED TYPE ID</label>
+                                <input type="text" name="" id="one" class="updateflagid"><br><br>
+                                <label>FLANGED TYPE NAME</label>
+                                <input type="text" name="" id="two" class="updateflagname"><br><br>
+                                <label>FLANGED TYPE DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="updateflagdesc">                                
+                                </div>
+                                 
+                            </div>
+                            <div class="alert alert-danger alertbox1 hidden" role="alert" id="alert1"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="savecancel">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="saveupdatedflangtype()" id="savenew">Update</button>
+                                <!-- <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalactuatorupdate" onclick="saveupdatedflangtype()" data-id="{{items.flangedid}}" id="edit">Edit</button></td>
+                                <td><button type="button" class="btn btn-danger delete-btnflang" data-bs-toggle="modal" data-bs-target="#exampleModalflangdelete" data-id="{{items.flangedid}}">Delete</button></td> -->
+                            </div>
+                            </div>
+                        </div>
+                </div>
+
+                <!-- <div class="updateflanged hidden" id="addflag">
                     <div class="col-8">
                         <div class="sub-head">
                             <h4>Edit Flanged Type</h4>
@@ -719,8 +1231,26 @@
                         <button id="btn2" onclick="cancelflangedtype()">CANCEL</button>
                         
                     </div>
-                </div>
+                </div> -->
                 <!-- 2nd row -3rd item -->
+
+                <div class="modal fade" id="exampleModalflangdelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Flanged Type</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are You want to Delete Flanged Type?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger confirm-delete-btn3">Delete</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                  
                 <div class="arrow6 hidden">
                     <img src="{% static 'image/polygon 14.png' %}" alt="">
@@ -728,11 +1258,12 @@
                 <div class="inside-container1 hidden" id="insidecontainer5">
                     <div class="heading">
                         <h5>Manage Actuator Type</h5>
-                        <button id="addactuator">Add</button>
+                        <!-- <button id="addactuator">Add</button> -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalactuator">ADD</button>
                         <h6>Create and assign a values to the actuator type</h6>
                     </div>
                     <div class="table-container">
-                        <table border="1" class="table6">
+                        <table class="table table-striped table-hover table-bordered table6">
                          <thead>
                                 <th>ACTUATOR TYPE ID</th>
                                 <th>ACTUATOR TYPE NAME</th>
@@ -746,13 +1277,43 @@
                                     <td>{{dataas.actuatorid}}</td>
                                     <td>{{dataas.actuatorname}}</td>
                                     <td>{{dataas.actuatordesc}}</td>
-                                    <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_actuator" onclick="editactuatortype(event)" data-id="{{dataas.actuatorid}}"></td>
-                                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_actuator" onclick="delete_actuatortype(event)" data-id="{{dataas.actuatorid}}"></td>
+                                    <!-- <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_actuator" onclick="editactuatortype(event)" data-id="{{dataas.actuatorid}}"></td>
+                                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_actuator" onclick="delete_actuatortype(event)" data-id="{{dataas.actuatorid}}"></td> -->
+                                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalactuatoredit" onclick="editactuatortype(event)" data-id="{{dataas.actuatorid}}" id="actuatoredit">Edit</button></td>
+                                    <td><button type="button" class="btn btn-danger delete-btnactuator" data-bs-toggle="modal" onclick="delete_actuatortype(event)" data-id="{{dataas.actuatorid}}">Delete</button></td>
                                 </tr>
                                 {% endfor %}
                         </tbody>
                     </table>
-                    <div class="adddata4 hidden" id="addactuatorvalue">
+
+                    <div class="modal fade" id="exampleModalactuator" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Add  Actuator Type</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>ACTUATOR TYPE ID</label>
+                                <input type="text" name="" id="one" class="actuatorid"><br><br>
+                                <label>ACTUATOR TYPE NAME</label>
+                                <input type="text" name="" id="two" class="actuatorname"><br><br>
+                                <label>ACTUATOR TYPE DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="actuatordesc">                                
+                                </div>
+                                 
+                            </div>
+                            <div class="alert alert-danger alertbox1 hidden" role="alert" id="alert1"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="saveactuatortype()">Save</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="adddata4 hidden" id="addactuatorvalue">
                         <div class="col-8">
                             <div class="sub-head">
                                 <h4>Add Actuator Type</h4>
@@ -773,11 +1334,11 @@
                             <button id="btn2" onclick="cancelactuatortype()">CANCEL</button>
                             
                         </div>
-                    </div>
+                    </div> -->
                     </div>    
                 </div><br>
 
-                <div class="updateactuator hidden" id="addactuatorvalue">
+                <!-- <div class="updateactuator hidden" id="addactuatorvalue">
                     <div class="col-8">
                         <div class="sub-head">
                             <h4>Edit Actuator Type</h4>
@@ -798,7 +1359,53 @@
                         <button id="btn2" onclick="cancel_updated_actuatortype()">CANCEL</button>
                         
                     </div>
-                </div>
+                </div> -->
+
+                <div class="modal fade" id="exampleModalactuatoredit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Edit  Actuator Type</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>ACTUATOR TYPE ID</label>
+                                <input type="text" name="" id="one" class="updateactuatorid"><br><br>
+                                <label>ACTUATOR TYPE NAME</label>
+                                <input type="text" name="" id="two" class="updateactuatorname"><br><br>
+                                <label>ACTUATOR TYPE DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="updateactuatordesc">                               
+                                </div>
+                                 
+                            </div>
+                            <div class="alert alert-danger alertbox1 hidden" role="alert" id="alert1"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="saveupdated_actuator()">Save</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="exampleModalactuatordelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Actuator Type</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are You want to Delete Actuator Type?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger confirm-delete-btn4">Delete</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                     <div class="third-row">
                         <div class="f-container" id="unitcontainer">
                             <h4>UNITS</h4>
@@ -814,11 +1421,12 @@
             <div class="inside-container2 hidden" id="insidecontainer6">
                 <div class="heading">
                     <h5>Manage Units</h5>
-                    <button id="addunit">Add</button>
+                    <!-- <button id="addunit">Add</button> -->
+                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalunit" id="addunit">ADD</button>
                     <h6>Create and assign a values to the system units</h6>
                 </div>
                 <div class="table-container">
-                    <table border="1" class="table7">
+                    <table class="table table-striped table-hover table-bordered table7">
                      <thead>
                             <th>UNIT ID</th>
                             <th>UNIT NAME</th>
@@ -832,64 +1440,98 @@
                                 <td>{{rows.unitid}}</td>
                                 <td>{{rows.unitname}}</td>
                                 <td>{{rows.unitdesc}}</td>
-                                <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_unit" onclick="editunittype(event)" data-id = "{{rows.unitid}}"></td>
-                                <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_unit" onclick="deleteunittype(event)" data-id = "{{rows.unitid}}"></td>
+                                <!-- <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_unit" onclick="editunittype(event)" data-id = "{{rows.unitid}}"></td>
+                                <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_unit" onclick="deleteunittype(event)" data-id = "{{rows.unitid}}"></td> -->
+                                <td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModaleditunit" onclick="editunittype(event)" data-id="{{rows.unitid}}" id="unitedit">Edit</button></td>
+                                <td><button type="button" class="btn btn-danger delete-btnunit" data-bs-toggle="modal" onclick="deleteunittype(event)" data-id="{{rows.unitid}}">Delete</button></td>
                             </tr>
                             {% endfor %}
                     </tbody>
                 </table>
-                <div class="adddata5 hidden" id="addunitvalue">
-                    <div class="col-8">
-                        <div class="sub-head">
-                            <h4>Add System Units</h4>
-                            <h6>Create and assign a values to the system units</h6>
-                        </div>
-                        <div class="small-table">
-                            <label>UNIT ID</label>
-                            <input type="text" name="" id="one" class="unitid"><br><br>
-                            <label>UNIT NAME</label>
-                            <input type="text" name="" id="two" class="unitname"><br><br>
-                            <label>UNIT DESCRIPTION</label>
-                            <input type="text" name="" id="three" class="unitdes">
-                            <h4 class="emptyclass4"></h4>
+
+                <div class="modal fade" id="exampleModalunit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Add  Unit Type</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                <label>UNIT ID</label>
+                                <input type="text" name="" id="one" class="unitid"><br><br>
+                                <label>UNIT NAME</label>
+                                <input type="text" name="" id="two" class="unitname"><br><br>
+                                <label>UNIT DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="unitdes">
+                                </div>
+                                 
+                            </div>
+                            <div class="alert alert-danger alertbox1 hidden" role="alert" id="alert1"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="saveunit()">Save</button>
+                            </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <button id="btn1" class="saveunit" onclick="saveunit()">SAVE</button>
-                        <button id="btn2" onclick="cancelunit()">CANCEL</button>
-                        
-                    </div>
-                </div>
+                
                 </div>    
             </div><br>
 
-            <div class="updateunit hidden" id="addunitvalue">
-                <div class="col-8">
-                    <div class="sub-head">
-                        <h4>Edit System Units</h4>
-                        <h6>Edit and assign a values to the system units</h6>
+            
+
+            <div class="modal fade" id="exampleModaleditunit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="exampleModalLabel">Edit  Unit Type</h3>
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="small-table1">
+                                 <label>UNIT ID</label>
+                                <input type="text" name="" id="one" class="updateunitid"><br><br>
+                                <label>UNIT NAME</label>
+                                <input type="text" name="" id="two" class="updateunitname"><br><br>
+                                <label>UNIT DESCRIPTION</label>
+                                <input type="text" name="" id="three" class="updateunitdes">
+                                </div>
+                                 
+                            </div>
+                            <div class="alert alert-danger alertbox1 hidden" role="alert" id="alert1"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="save_updated_unit()">Update</button>
+                            </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="small-table">
-                        <label>UNIT ID</label>
-                        <input type="text" name="" id="one" class="updateunitid"><br><br>
-                        <label>UNIT NAME</label>
-                        <input type="text" name="" id="two" class="updateunitname"><br><br>
-                        <label>UNIT DESCRIPTION</label>
-                        <input type="text" name="" id="three" class="updateunitdes">
-                        <h4 class="emptyclass4"></h4>
+
+                    <div class="modal fade" id="exampleModalunitdelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Actuator Type</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are You want to Delete Actuator Type?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger confirm-delete-btn5">Delete</button>
+                        </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <button id="btn1" class="saveunit" onclick="save_updated_unit()">SAVE</button>
-                    <button id="btn2" onclick="cancel_updated_unit()">CANCEL</button>
-                    
-                </div>
-            </div>
+                    </div>
             </div>
             </div>
         </div>
 
-        <script>
+<script>
 
 document.getElementsByClassName("f-container")[0].addEventListener('click', function() {
     var arrow = document.getElementsByClassName("arrow")[0];
@@ -942,107 +1584,240 @@ document.getElementsByClassName("f-container")[0].addEventListener('click', func
     }
 });
 
-document.getElementById("addvalve").addEventListener('click',function(){
-    document.getElementsByClassName("adddata")[0].style.display="block";
-})
+// document.getElementById("addvalve").addEventListener('click',function(){
+//     document.getElementsByClassName("adddata")[0].style.display="block";
+// })
 
-function save_valve_size(){
+function save_valve_size() {
     var sizeid = document.getElementById("one").value;
     var sizename = document.getElementById("two").value;
     var sizedesc = document.getElementById("three").value;
 
-    var formdata = new FormData()
-    formdata.append('sizeid',sizeid)
-    formdata.append('sizename',sizename)
-    formdata.append('sizedesc',sizedesc)
+    if (sizeid === "" || sizename === "" || sizedesc === "") {
+        let timerInterval;
+        Swal.fire({
+            title: "Fields should not be empty!!",
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+                const timer = Swal.getPopup().querySelector("b");
+                timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                }, 100);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+            }
+        });
+        return; // Exit the function if fields are empty
+    }
 
-    fetch('/savevalvedata/',{
-        method : "POST",
-        body : formdata
+    var formdata = new FormData();
+    formdata.append('sizeid', sizeid);
+    formdata.append('sizename', sizename);
+    formdata.append('sizedesc', sizedesc);
+
+    fetch('/savevalvedata/', {
+        method: "POST",
+        body: formdata
     })
-
     .then(response => response.json())
-    .then(data =>{
-        if(data.status =="success"){
-            alert("data added successfully")
-            document.getElementsByClassName("adddata")[0].style.display="none";
+    .then(data => {
+        if (data.status === "success") {
+            Swal.fire({
+                title: "Valve Size Added",
+                icon: "success",
+                draggable: true
+            }).then(() => {
+                // Reload the page after the user clicks "OK"
+                location.reload();
+            });
+
+            let valvesizeclose = bootstrap.Modal.getInstance(document.getElementById('exampleModal'));
+            valvesizeclose.hide();
 
             const tableBody = document.querySelector("table tbody");
             const row = document.createElement("tr");
-            row.setAttribute("data-id", data.id);  // Add the ID to the new row
-                row.innerHTML = `
-    
-                    <td>${sizeid}</td>
-                    <td>${sizename}</td>
-                    <td>${sizedesc}</td>
-                    <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon" onclick="editvalvesizeitem(event)" data-id="{{item.sizeid}}"></td>
-                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon"  onclick="deletevalvesize(event)" data-id="{{item.sizeid}}"></td>
-                `;
-                tableBody.appendChild(row);
-
+            row.setAttribute("data-id", data.sizeid);  // Add the ID to the new row
+            row.innerHTML = `
+                <td>${sizeid}</td>
+                <td>${sizename}</td>
+                <td>${sizedesc}</td>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="editvalvesizeitem(event)" data-id="${data.sizeid}" id="edit"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</button></td>
+                <td><button type="button" class="btn btn-danger delete-btn" data-bs-toggle="modal" onclick="deletevalvesize(event)" data-id="${data.sizeid}"><i class="fa-solid fa-trash"></i>&nbsp;Delete</button></td>
+            `;
+            tableBody.appendChild(row);
+            resetform1();
+        } else {
+            alert("Data not added");
         }
-        else{
-        alert("data not added")
-    }
     })
-    
-
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire("Duplicate Entry!");
+    });
 }
 
-// delete //
+
+function resetform1(){
+    document.getElementById("one").value = "";
+    document.getElementById("two").value = "";
+    document.getElementById("three").value = "";
+}
+// delete button//
 
 function deletevalvesize(event) {
     const id = event.target.getAttribute('data-id');
+    const row = event.target.closest("tr");
 
     if (id) {
-        if (confirm("Are you sure you want to delete this row?")) {
-            const formdata = new FormData();
-            formdata.append('id', id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const formdata = new FormData();
+                formdata.append('id', id);
 
-            fetch('/deletedata/', {
-                method: "POST",
-                body: formdata
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    alert("data deleted");
-                    const row = event.target.closest("tr");
-                    if (row) {
-                        row.remove();
+                fetch('/deletedata/', {
+                    method: "POST",
+                    body: formdata
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        if (row) {
+                            row.remove();
+                        }
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Unable to delete the item.",
+                            icon: "error"
+                        });
                     }
-                } else {
-                    alert("not deleted");
-                }
-            });
-        }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "An error occurred while deleting.",
+                        icon: "error"
+                    });
+                });
+            }
+        });
     }
 }
-var currentId = null
-function editvalvesizeitem(event){
-    const id = event.target.getAttribute("data-id")
-    // alert(id)
-    currentId = id
-    document.getElementsByClassName("updatedata")[0].style.display="block";
 
-    var formdata = new FormData()
-    formdata.append("size",id)
-    fetch('/get_data_for_edit/',{
-        method:"POST",
-        body:formdata
+// document.addEventListener('DOMContentLoaded', function () {
+//   let currentRowId = null; 
+//   let currentRow = null;
+
+  
+//   document.addEventListener('click', function (event) {
+//     if (event.target.classList.contains('delete-btn')) {
+//       currentRowId = event.target.getAttribute('data-id');
+//       currentRow = event.target.closest('tr');
+//       console.log('Delete button clicked, ID:', currentRowId, 'Row:', currentRow); // Debugging
+//     }
+//   });
+
+ 
+//   const confirmDeleteBtn = document.querySelector('.confirm-delete-btn');
+//   if (confirmDeleteBtn) {
+//     confirmDeleteBtn.addEventListener('click', async function () {
+//       console.log('Confirm delete clicked, currentRowId:', currentRowId, 'currentRow:', currentRow); // Debugging
+//       if (currentRowId && currentRow) {
+//         const formdata = new FormData();
+//         formdata.append('id', currentRowId);
+
+//         try {
+//           const response = await fetch('/deletedata/', {
+//             method: 'POST',
+//             body: formdata,
+//             credentials: 'include', 
+//           });
+
+//           const data = await response.json();
+
+//           if (data.status === 'success') {
+//             currentRow.remove();
+//             const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModal2'));
+//             modal.hide();
+//             // alert('Data deleted successfully');
+           
+//           } else {
+//             alert('Failed to delete data: ' + (data.message || 'Unknown error'));
+//           }
+//         } catch (error) {
+//           console.error('Error during deletion:', error);
+//           alert('Server error. Please try again.');
+//         }
+//       } else {
+//         alert('No row selected for deletion');
+//         console.error('No row selected, currentRowId:', currentRowId, 'currentRow:', currentRow);
+//       }
+//     });
+//   } else {
+//     console.error('Confirm delete button not found in DOM');
+//   }
+// });
+
+var currentId = null;
+
+function editvalvesizeitem(event) {
+    // Find closest button element from event target to avoid issues if icon inside button is clicked
+    const button = event.target.closest('button[data-id]');
+    if (!button) {
+        alert('Could not find the edit button.');
+        return;
+    }
+
+    const id = button.getAttribute("data-id");
+    currentId = id;
+
+    console.log("Editing item with ID:", id); // Debug log
+
+    var formdata = new FormData();
+    formdata.append("size", id);
+
+    fetch('/get_data_for_edit/', {
+        method: "POST",
+        body: formdata
     })
     .then(response => response.json())
-    .then(data =>{
-        if(data.status == "success"){
+    .then(data => {
+        console.log("Response data for edit:", data); // Debug log
+
+        if (data.status === "success") {
             document.getElementById("updateone").value = data.data1.size_id;
             document.getElementById("updatetwo").value = data.data1.size_name;
             document.getElementById("updatethree").value = data.data1.size_desc;
-        }
-        else{
-            alert("no")
+        } else {
+            alert("No data found for the given ID.");
         }
     })
+    .catch(error => {
+        console.error('Error fetching data for edit:', error);
+        alert('An error occurred while fetching data for edit.');
+    });
 }
+
 
 function updateedit() {
     var updateone1 = document.getElementById("updateone").value;
@@ -1063,8 +1838,16 @@ function updateedit() {
     .then(response => response.json())
     .then(data => {
         if (data.status == "success") {
-            alert("data updated");
-            document.getElementsByClassName("updatedata")[0].style.display = "none";
+            Swal.fire({
+                title: "Valve Size Updated",
+                icon: "success",
+                draggable: true
+                 }).then(() => {
+                // Reload the page after the user clicks "OK"
+                location.reload();
+            });
+            let valvesizeclose = bootstrap.Modal.getInstance(document.getElementById('exampleModal1'));
+            valvesizeclose.hide();
 
             const rows = document.querySelectorAll("table tbody tr");
             rows.forEach(row => {
@@ -1073,8 +1856,8 @@ function updateedit() {
                         <td>${updateone1}</td>
                         <td>${updateone2}</td>
                         <td>${updateone3}</td>
-                        <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon" onclick="editvalvesizeitem(event)" data-id="${id}"></td>
-                        <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon"  onclick="deletevalvesize(event)" data-id="${id}"></td>
+                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="editvalvesizeitem(event)" data-id="{{item.sizeid}}"id="edit"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</button></td>
+                        <td><button type="button" class="btn btn-danger delete-btn" data-bs-toggle="modal" onclick="deletevalvesize(event)" data-id="{{item.sizeid}}"><i class="fa-solid fa-trash"></i>&nbsp;Delete</button></td>
                     `;
                 }
             });
@@ -1089,10 +1872,10 @@ document.getElementById("cancelbtn").addEventListener('click',function(){
     adddata.style.display = "none";
 })
 
-document.getElementById("updatecancel").addEventListener('click',function(){
-    var updatedata = document.getElementsByClassName("updatedata")[0];
-    updatedata.style.display = "none";
-});
+// document.getElementById("updatecancel").addEventListener('click',function(){
+//     var updatedata = document.getElementsByClassName("updatedata")[0];
+//     updatedata.style.display = "none";
+// });
 
 
 // valve type //
@@ -1145,15 +1928,15 @@ document.getElementsByClassName("t-container")[0].addEventListener('click', func
 
 // add valvetype button//
 
-document.getElementById("addvalvetype").addEventListener('click',function(){
-    document.getElementsByClassName("adddata2")[0].style.display="block";
-});
+// document.getElementById("addvalvetype").addEventListener('click',function(){
+//     document.getElementsByClassName("adddata2")[0].style.display="block";
+// });
 
 //cancel add container //
 
-function cancelclasstype(){
-    document.getElementsByClassName("adddata2")[0].style.display="none";
-}
+// function cancelclasstype(){
+//     document.getElementsByClassName("adddata2")[0].style.display="none";
+// }
 
 // save class type //
 
@@ -1161,11 +1944,31 @@ function saveclasstype(){
     var typeid = document.getElementsByClassName("typeid")[0].value;
     var typename = document.getElementsByClassName("typename")[0].value;
     var typedesc = document.getElementsByClassName("typedesc")[0].value;
-    var emptyclass1 = document.getElementsByClassName("emptyclass1")[0];
+    // var emptyclass1 = document.getElementsByClassName("emptyclass1")[0];
 
     if (typeid =="" || typename=="" || typedesc==""){
-        emptyclass1.innerHTML=" Fields should not be empty";
-        return;
+        let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        // html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        });
     }
     var formdata = new FormData()
     formdata.append('typeid',typeid)
@@ -1179,35 +1982,128 @@ function saveclasstype(){
     .then(response => response.json())
     .then(data =>{
         if(data.status == "success"){
-            alert("data added")
-            document.getElementsByClassName("adddata2")[0].style.display="none";
-            const tablebody = document.querySelector("#classtypeTable tbody");
+            Swal.fire({
+                title: "Valve Type Added",
+                // text: "You clicked the button!",
+                icon: "success",
+                draggable: true
+                })
+                .then(() =>{
+                    location.reload()
+                });
+            let valvetypeclose = bootstrap.Modal.getInstance(document.getElementById('exampleModaltype'));
+            valvetypeclose.hide();
+
+            const tablebody = document.querySelector("#table3 tbody");
             const row = document.createElement("tr");
             row.setAttribute("data-id", data.typeid);
             row.innerHTML = `
-            <td>${typeid}</td>
-            <td>${typename}</td>
-            <td>${typedesc}</td>
-            <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_valve" onclick="editvalvetype('{{ datas.typeid }}')"></td>
-            <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_valve" onclick="deletevalvetype('{{ datas.typeid }}')"></td>
-            `;
+                <td>${typeid}</td>
+                <td>${typename}</td>
+                <td>${typedesc}</td>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModaltype" onclick="editvalvetype(event)" data-id="{{data.typeid}}" id="edit">&nbsp;Edit</button></td>
+                <td><button type="button" class="btn btn-danger delete-btn1" data-bs-toggle="modal" onclick="deletevalveclass(event)" data-id="{{data.classid}}">&nbsp;Delete</button></td>
+                `;
             tablebody.appendChild(row);
         }
-        else{
-            alert("data not added")
+         else {
+            Swal.fire({
+                title: "Error",
+                text: data.message || "Data not added",
+                icon: "error"
+            });
         }
     })
-
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire("Duplicate Entry!");  // Simple error message like in your working code
+    });
 }
 
+function saveclass() {
+    var classid = document.getElementsByClassName("classid")[0].value;
+    var classname = document.getElementsByClassName("classname")[0].value;
+    var classdesc = document.getElementsByClassName("classdesc")[0].value;
 
+    if (classid === "" || classname === "" || classdesc === "") {
+        let timerInterval;
+        Swal.fire({
+            title: "Fields should not be empty!!",
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        });
+        return; // Exit the function if validation fails
+    }
+
+    var formdata = new FormData();
+    formdata.append('classid', classid);
+    formdata.append('classname', classname);
+    formdata.append('classdesc', classdesc);
+
+    // Similar to your working save_valve_size function
+    fetch('/save_valveclass/', {
+        method: "POST",
+        body: formdata
+    })
+    .then(response => {
+        // Very simple response handling
+        if (!response.ok) {
+            throw new Error("Server error");
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.status === "success") {
+            Swal.fire({
+                title: "Valve Class Added",
+                icon: "success",
+                draggable: true
+            }).then(() => {
+                location.reload();
+            });
+
+            let valveclassclose = bootstrap.Modal.getInstance(document.getElementById('exampleModalclass'));
+            valveclassclose.hide();
+
+            const tablebody = document.querySelector("#table2 tbody");
+            const row = document.createElement("tr");
+            row.setAttribute("data-id", classid);
+
+            row.innerHTML = `
+                <td>${classid}</td>
+                <td>${classname}</td>
+                <td>${classdesc}</td>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalclass" onclick="editvalveclass(event)" data-id="${classid}" id="edit">&nbsp;Edit</button></td>
+                <td><button type="button" class="btn btn-danger delete-btn1" data-bs-toggle="modal" onclick="deletevalveclass(event)" data-id="${classid}">&nbsp;Delete</button></td>
+            `;
+            tablebody.appendChild(row);
+        } else {
+            Swal.fire({
+                title: "Error",
+                text: data.message || "Data not added",
+                icon: "error"
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire("Duplicate Entry!");  // Simple error message like in your working code
+    });
+}
 // Edit valve type //
 var currentvalvetypeid = null
 function editvalvetype(event){
     var id = event.target.getAttribute("data-id")
     currentvalvetypeid = id
-
-    document.getElementsByClassName("updatevalvetype")[0].style.display="block";
+    console.log(id);
+    
+    document.getElementById("exampleModaledittype").style.display="block";
 
     var formdata = new FormData();
     formdata.append("id", id);
@@ -1238,8 +2134,28 @@ function updateclasstype(){
     var updatetypedesc = document.getElementsByClassName("updatetypedesc")[0].value;
 
     if(updatetypeid =="" || updatetypename =="" || updatetypedesc ==""){
-        document.getElementsByClassName("emptyclass5")[0].innerHTML = "Fields should not be empty";
-        return;
+      let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        //   html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        }); 
     }
 
     var formdata = new FormData()
@@ -1255,19 +2171,28 @@ function updateclasstype(){
     .then(response => response.json())
     .then(data =>{
         if(data.status == "success"){
-            alert("data updated")
-            document.getElementsByClassName("updatevalvetype")[0].style.display="none";
+            Swal.fire({
+                title: "Valve Type Updated",
+                icon: "success",
+                draggable: true
+                })
+                 .then(() =>{
+                    location.reload()
+                });
+        
+            let valvetypeclose1 = bootstrap.Modal.getInstance(document.getElementById('exampleModaledittype'));
+            valvetypeclose1.hide();
 
-            const row1 = document.querySelectorAll("#classtypeTable tbody tr");
+            const row1 = document.querySelectorAll("#table3 tbody tr");
             row1.forEach(row =>{
                 if(row.getAttribute("data-id") === currentvalvetypeid){
                     row.innerHTML = `
-                    <td>${updatetypeid}</td>
-                    <td>${updatetypename}</td>
-                    <td>${updatetypedesc}</td>
-                    <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_valve" onclick="editvalvetype('{{ datas.typeid }}')"></td>
-                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_valve" onclick="deletevalvetype('{{ datas.typeid }}')"></td>
-                    `;
+                        <td>${updatetypeid}</td>
+                        <td>${updatetypename}</td>
+                        <td>${updatetypedesc}</td>
+                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModaledittype" onclick="editvalvetype(event)" data-id="{{datas.typeid}}">Edit</button></td>
+                        <td><button type="button" class="btn btn-danger delete-btn1" data-bs-toggle="modal" onclick="deletevalveclass(event)" data-id="{{data.classid}}">Delete</button></td>
+                        `;
                 }
             })
         }
@@ -1281,38 +2206,111 @@ function updateclasstype(){
 
 function deletevalvetype(event){
     var id = event.target.getAttribute('data-id');
+    const row = event.target.closest("tr");
 
     if(id){
-        if(confirm("Are you sure you want to delete this row?")){
-            var formdata = new FormData()
-            formdata.append("id",id)
-            
-            fetch('/delete_valvetype/',{
-                method : "POST",
-                body : formdata
-            })
-            .then(response => response.json())
-            .then(data =>{
-                if(data.status == "success"){
-                    alert("data deleted")
-                    const row = event.target.closest("tr");
-                    if(row){
-                        row.remove();
+         Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const formdata = new FormData();
+                formdata.append('id', id);
+
+                fetch('/deletedata/', {
+                    method: "POST",
+                    body: formdata
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        if (row) {
+                            row.remove();
+                        }
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Unable to delete the item.",
+                            icon: "error"
+                        });
                     }
-                }
-                else{
-                    alert("data not deleted")
-                }
-            })
-        }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "An error occurred while deleting.",
+                        icon: "error"
+                    });
+                });
+            }
+        });
     }
 }
 
 
-// cancel update valve type form //
-function cancelclasstype1(){
-    document.getElementsByClassName("updatevalvetype")[0].style.display="none";
+// delete valve class//
+
+
+let currentRowId2 = null; 
+let currentRow2 = null;
+
+// Capture the row info when the delete button is clicked
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('delete-btn3')) {
+    currentRowId2 = event.target.getAttribute('data-id');
+    currentRow2 = event.target.closest('tr');
+    console.log('Delete button clicked, ID:', currentRowId1, 'Row:', currentRow1);
+  }
+});
+
+// Attach listener to the confirm delete button
+const confirmdeletebtn2 = document.querySelector('.confirm-delete-btn2');
+
+if (confirmdeletebtn2) {
+  confirmdeletebtn2.addEventListener('click', async function () {
+    if (currentRowId2 && currentRow2) {
+      const formdata = new FormData();
+      formdata.append('id', currentRowId2);
+      console.log("currentRowId2", currentRowId2);
+
+      try {
+        const response = await fetch('/delete_valvetype/', {
+          method: 'POST',
+          body: formdata,
+          credentials: 'include',
+        });
+        const data = await response.json();
+
+        if (data.status === 'success') {
+          currentRow2.remove();
+          const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModal_deletetype'));
+          modal.hide();
+        } else {
+          alert('Failed to delete data: ' + (data.message || 'Unknown error'));
+        }
+      } catch (error) {
+        console.error('Error during deletion:', error);
+        alert('Server error. Please try again.');
+      }
+    } else {
+      alert('No row selected for deletion');
+      console.error('No row selected, currentRowId:', currentRowId2, 'currentRow:', currentRow2);
+    }
+  });
+} else {
+  console.error('Confirm delete button not found in DOM');
 }
+
 
 
 // valve class //
@@ -1364,9 +2362,9 @@ document.getElementsByClassName("s-container")[0].addEventListener('click', func
 
 // add class button //
 
-document.getElementById("addclass").addEventListener('click',function(){
-    document.getElementsByClassName("adddata1")[0].style.display="block";
-})
+// document.getElementById("addclass").addEventListener('click',function(){
+//     document.getElementsByClassName("adddata1")[0].style.display="block";
+// })
  // sAVE valve class //
 
  function saveclass(){
@@ -1375,8 +2373,28 @@ document.getElementById("addclass").addEventListener('click',function(){
     var classdes = document.getElementsByClassName("classdes")[0].value;
 
     if (classid =="" || classname =="" || classdes ==""){
-        alert("Fields should not be empty")
-        return;
+        let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        // html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        });
     }
 
     var formdata = new FormData()
@@ -1391,41 +2409,60 @@ document.getElementById("addclass").addEventListener('click',function(){
     .then(response => response.json())
     .then(data =>{
         if(data.status == "success"){
-            alert("data added")
-            document.getElementsByClassName("adddata1")[0].style.display="none";
+            Swal.fire({
+                title: "Valve Class Added",
+                icon: "success",
+                draggable: true
+            })
+            .then(() =>{
+                location.reload();
+            });
 
-            const tablebody = document.querySelector(".table2 tbody")
+            let valveclassclose = bootstrap.Modal.getInstance(document.getElementById('exampleModal3'));
+            valveclassclose.hide();
+
+            const tablebody = document.querySelector("#table2 tbody")
             const row = document.createElement("tr");
             row.setAttribute("data-id",data.classid);
+
             row.innerHTML =`
-            <td>${classid}</td>
-            <td>${classname}</td>
-            <td>${classdesc}</td>
-            <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon2" onclick="editvalveclass(event)" data-id="{{data.classid}}"></td>
-            <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon2" onclick="deletevalveclass(event)" data-id="{{data.classid}}"></td>
-            `;
+                <td>${classid}</td>
+                <td>${classname}</td>
+                <td>${classdes}</td>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="editvalveclass(event)" data-id="{{data.classid}}" id="edit">Edit</button></td>
+                <td><button type="button" class="btn btn-danger delete-btn1" data-bs-toggle="modal" data-bs-target="#exampleModal_deleteclass" data-id="{{data.classid}}">Delete</button></td>
+                `;
 
             tablebody.appendChild(row);
-        }
-        else{
-            alert("data not added")
+            document.getElementsByClassName("classid")[0].value = "";
+            document.getElementsByClassName("classname")[0].value = "";
+            document.getElementsByClassName("classdes")[0].value = "";
+                    }
+        else {
+            Swal.fire({
+                title: "Error",
+                text: data.message || "Data not added",
+                icon: "error"
+            });
         }
     })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire("Duplicate Entry!");  // Simple error message like in your working code
+    });
  }
 
  // cancel class //
 
- document.getElementsByClassName("cancelclass")[0].addEventListener('click',function(){
-    document.getElementsByClassName("adddata1")[0].style.display="none";
- })
+//  document.getElementsByClassName("cancelclass")[0].addEventListener('click',function(){
+//     document.getElementsByClassName("adddata1")[0].style.display="none";
+//  })
 
  // edit valve class //
 var classid =null
 function editvalveclass(event){
     var id = event.target.getAttribute("data-id");
     classid = id
-
-    document.getElementsByClassName("adddata11")[0].style.display = "block";
 
     var formdata = new FormData()
     formdata.append('id',id)
@@ -1467,19 +2504,27 @@ function updateclass(){
     .then(response => response.json())
     .then(data => {
         if(data.status == "success"){
-            alert("data updated")
-            document.getElementsByClassName("adddata11")[0].style.display = "none";
+            Swal.fire({
+            title: "Valve Class Updated",
+            icon: "success",
+            draggable: true
+            })
+            .then(() =>{
+                location.reload();
+            })
+            let valveclassclose = bootstrap.Modal.getInstance(document.getElementById('exampleModal4'));
+            valveclassclose.hide();
 
-            const rows = document.querySelectorAll('.table2 tbody tr');
+            const rows = document.querySelectorAll('#table2 tbody tr');
             rows.forEach(row => {
             if(row.getAttribute("data-id")=== classid){
                 row.innerHTML = `
-                <td>${updateclassid}</td>
-                <td>${updateclassname}</td>
-                <td>${updateclassdes}</td>
-                <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon2" onclick="editvalveclass(event)" data-id="{{data.classid}}"></td>
-                <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon2" onclick="deletevalveclass(event)" data-id="{{data.classid}}"></td>
-                `;
+                    <td>${updateclassid}</td>
+                    <td>${updateclassname}</td>
+                    <td>${updateclassdes}</td>
+                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4" onclick="editvalveclass(event)" data-id="{{data.classid}}" id="edit">Edit</button></td>
+                    <td><button type="button" class="btn btn-danger delete-btn1" data-bs-toggle="modal" data-bs-target="#exampleModal_deleteclass" data-id="{{data.classid}}">Delete</button></td>
+                    `;
             }
            });
         }
@@ -1490,19 +2535,80 @@ function updateclass(){
 
 }
 
-function cancelupdate(){
-    document.getElementsByClassName("adddata11")[0].style.display = "none";
-}
 
 // delete valve class//
 
+
+let currentRowId1 = null; 
+let currentRow1 = null;
+
+// Capture the row info when the delete button is clicked
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('delete-btn1')) {
+    currentRowId1 = event.target.getAttribute('data-id');
+    currentRow1 = event.target.closest('tr');
+    console.log('Delete button clicked, ID:', currentRowId1, 'Row:', currentRow1);
+  }
+});
+
+// Attach listener to the confirm delete button
+const confirmDeleteBtn1 = document.querySelector('.confirm-delete-btn1');
+
+if (confirmDeleteBtn1) {
+  confirmDeleteBtn1.addEventListener('click', async function () {
+    if (currentRowId1 && currentRow1) {
+      const formdata = new FormData();
+      formdata.append('id', currentRowId1);
+      console.log("currentRowId1", currentRowId1);
+
+      try {
+        const response = await fetch('/delete_valveclass/', {
+          method: 'POST',
+          body: formdata,
+          credentials: 'include',
+        });
+        const data = await response.json();
+
+        if (data.status === 'success') {
+          currentRow1.remove();
+          const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModal_deleteclass'));
+          modal.hide();
+        } else {
+          alert('Failed to delete data: ' + (data.message || 'Unknown error'));
+        }
+      } catch (error) {
+        console.error('Error during deletion:', error);
+        alert('Server error. Please try again.');
+      }
+    } else {
+      alert('No row selected for deletion');
+      console.error('No row selected, currentRowId:', currentRowId1, 'currentRow:', currentRow1);
+    }
+  });
+} else {
+  console.error('Confirm delete button not found in DOM');
+}
+
+
+
+
 function deletevalveclass(event){
     var id = event.target.getAttribute('data-id');
+    const row = event.target.closest("tr");
 
     if(id){
-        if(confirm("Are you sure you want to delete this row?")){
-            var formdata = new FormData()
-            formdata.append("id",id)
+         Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const formdata = new FormData();
+                formdata.append('id', id);
             
             fetch('/delete_valveclass/',{
                 method : "POST",
@@ -1511,17 +2617,31 @@ function deletevalveclass(event){
             .then(response => response.json())
             .then(data =>{
                 if(data.status == "success"){
-                    alert("data deleted")
-                    const row = event.target.closest("tr");
-                    if(row){
-                        row.remove();
+                    if (row) {
+                            row.remove();
+                        }
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Unable to delete the item.",
+                            icon: "error"
+                        });
                     }
-                }
-                else{
-                    alert("data not deleted")
-                }
-            })
-        }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "An error occurred while deleting.",
+                        icon: "error"
+                    });
+                });
+            }
+        });
     }
 }
 
@@ -1572,11 +2692,6 @@ document.getElementById("scontainer1").addEventListener('click',function(){
         }
     });
 
-    // add flanged//
-
-    document.getElementById("addflanged").addEventListener('click',function(){
-        document.getElementsByClassName("adddata3")[0].style.display="block";
-    });
 
     // save flanged type //
 
@@ -1586,8 +2701,28 @@ document.getElementById("scontainer1").addEventListener('click',function(){
         var flagdesc = document.getElementsByClassName("flagdesc")[0].value;
 
         if(flagid == "" || flagname == "" || flagdesc == ""){
-            alert("fields should not be empty");
-            return;
+           let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        // html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        });
         }
 
         var formdata = new FormData()
@@ -1602,39 +2737,50 @@ document.getElementById("scontainer1").addEventListener('click',function(){
         .then(response => response.json())
         .then(data =>{
             if(data.status == "success"){
-                alert("data added")
-                document.getElementsByClassName("adddata3")[0].style.display="none";
+                    Swal.fire({
+                    title: "Flanged Type Added",
+                    icon: "success",
+                    draggable: true
+            })
+            .then(()=>{
+                location.reload();
+            })
 
-                const tablebody = document.querySelector(".table5 tbody");
+                const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModalflang'));
+                modal.hide();
+
+                const tablebody = document.querySelector("#table5 tbody");
                 const row = document.createElement("tr")
                 row.setAttribute("data-id",data.flagid);
                 row.innerHTML =`
-                <td>${flagid}</td>
-                <td>${flagname}</td>
-                <td>${flagdesc}</td>
-                <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon2" onclick="editvalveclass(event)" data-id="{{data.flagid}}"></td>
-                <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon2" onclick="deletevalveclass(event)" data-id="{{data.flagid}}"></td>
-                `;
-                tablebody.appendChild(row);
+                    <td>${flagid}</td>
+                    <td>${flagname}</td>
+                    <td>${flagdesc}</td>
+                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalflangedit" onclick="editflangtype(event)" data-id="{{items.flangedid}}" id="edit">Edit</button></td>
+                                    <td><button type="button" class="btn btn-danger delete-btnflang" data-bs-toggle="modal" onclick="deleteflangedtype(event)" data-id="{{items.flangedid}}">Delete</button></td>
+                    `;
+                    tablebody.appendChild(row);
             }
-            else{
-                alert("data not added")
-            }
-        })
+            else {
+            Swal.fire({
+                title: "Error",
+                text: data.message || "Data not added",
+                icon: "error"
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire("Duplicate Entry!");  // Simple error message like in your working code
+    });
     }
 
-    //cancel flanged type //
-
-    function cancelflangedtype(){
-        document.getElementsByClassName("updateflanged")[0].style.display="none";
-    }
 
     // Edit flanged type //
     var currentflangedid =null
     function editflangtype(event){
         var id = event.target.getAttribute("data-id")
         currentflangedid = id
-        document.getElementsByClassName("updateflanged")[0].style.display="block";
 
         var formdata = new FormData()
         formdata.append('id',id)
@@ -1667,8 +2813,28 @@ document.getElementById("scontainer1").addEventListener('click',function(){
     var updateflagdesc = document.getElementsByClassName("updateflagdesc")[0].value;
 
     if(updateflagid == "" || updateflagname == "" || updateflagdesc == ""){
-        alert("Fields should not be empty");
-        return;
+        let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        // html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        });
     }
     var formdata = new FormData()
     formdata.append('updateflagid',updateflagid)
@@ -1683,18 +2849,27 @@ document.getElementById("scontainer1").addEventListener('click',function(){
     .then(response => response.json())
     .then(data =>{
         if(data.status == "success"){
-            alert("data updated")
-            document.getElementsByClassName("updateflanged")[0].style.display="none";
+            Swal.fire({
+                title: "Valve Type Updated",
+                icon: "success",
+                draggable: true
+            })
+             .then(()=>{
+                location.reload();
+            })
 
-            const rows = document.querySelectorAll(".table5 tbody tr");
+            const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModalflangedit'));
+            modal.hide();
+
+            const rows = document.querySelectorAll("#table5 tbody tr");
             rows.forEach(row => {
                 if(row.getAttribute("data-id") === currentflangedid){
                     row.innerHTML = `
                         <td>${updateflagid}</td>
                         <td>${updateflagname}</td>
                         <td>${updateflagdesc}</td>
-                        <td><img src="{% static 'image/editicon.png' %}" alt="" id="editicon2" onclick="editvalveclass(event)" data-id="{{data.flagid}}"></td>
-                        <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon2" onclick="deletevalveclass(event)" data-id="{{data.flagid}}"></td>
+                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalflangedit" onclick="editflangtype(event)" data-id="{{items.flangedid}}" id="edit">Edit</button></td>
+                        <td><button type="button" class="btn btn-danger delete-btnflang" data-bs-toggle="modal" onclick="deleteflangedtype(event)" data-id="{{items.flangedid}}">Delete</button></td>
                     `;                    
                 }
             })
@@ -1704,6 +2879,137 @@ document.getElementById("scontainer1").addEventListener('click',function(){
         }
     })
 }
+
+
+// delete flang class//
+function deleteflangedtype(event){
+    var id = event.target.getAttribute("data-id")
+    console.log(id);
+    
+    if(id){
+        // Replace the basic confirm with SweetAlert
+        Swal.fire({
+            title: "Are you sure?", 
+            text: "You won't be able to revert this!", 
+            icon: "warning", 
+            showCancelButton: true, 
+            confirmButtonColor: "#3085d6", 
+            cancelButtonColor: "#d33", 
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if(result.isConfirmed){
+                var formdata = new FormData()
+                formdata.append('id', id)
+
+                fetch('/delete_flangtype/', {
+                    method: "POST",
+                    body: formdata
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status == "success"){
+                        // Replace basic alert with SweetAlert success
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                        
+                        const row = event.target.closest("tr");
+                        if(row){
+                            row.remove();
+                        }
+                    }
+                    else{
+                        // Replace basic alert with SweetAlert error
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Data not deleted",
+                            icon: "error"
+                        });
+                    }
+                })
+                .catch(error => {
+                    // Add error handling
+                    Swal.fire({
+                        title: "Error!",
+                        text: "An error occurred while deleting.",
+                        icon: "error"
+                    });
+                });
+            }
+        });
+    }
+}
+// Variables to track the currently selected row for deletion
+let currentRowId3 = null;
+let currentRow3 = null;
+
+// Capture the row info when the delete button is clicked
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('delete-btnflang')) {
+    currentRowId3 = event.target.getAttribute('data-id');
+    currentRow3 = event.target.closest('tr');
+    console.log('Delete button clicked, ID:', currentRowId3, 'Row:', currentRow3);
+  }
+});
+
+// Attach listener to the confirm delete button
+document.addEventListener('DOMContentLoaded', function() {
+  const confirmDeleteBtn3 = document.querySelector('.confirm-delete-btn3');
+  if (confirmDeleteBtn3) {
+    confirmDeleteBtn3.addEventListener('click', async function () {
+      if (currentRowId3 && currentRow3) { // Changed from currentRowId1 to currentRowId3
+        try {
+          const response = await fetch('/delete_flangtype/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': getCsrfToken() // Function to get CSRF token (defined below)
+            },
+            body: JSON.stringify({ id: currentRowId3 }), // Changed to send JSON instead of FormData
+            credentials: 'include',
+          });
+          
+          const data = await response.json();
+          
+          if (data.status === 'success') {
+            console.log(data.status);
+            currentRow3.remove();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModalflangdelete')); // Fixed modal ID
+            modal.hide();
+          } else {
+            alert('Failed to delete data: ' + (data.message || 'Unknown error'));
+          }
+        } catch (error) {
+          console.error('Error during deletion:', error);
+          alert('Server error. Please try again.');
+        }
+      } else {
+        alert('No row selected for deletion');
+        console.error('No row selected, currentRowId:', currentRowId3, 'currentRow:', currentRow3);
+      }
+    });
+  } else {
+    console.error('Confirm delete button not found in DOM');
+  }
+});
+
+// Function to get CSRF token from cookies
+function getCsrfToken() {
+  const name = 'csrftoken=';
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(';');
+  
+  for (let i = 0; i < cookieArray.length; i++) {
+    let cookie = cookieArray[i].trim();
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return '';
+}
+
 
 // Actuator type //
 
@@ -1752,17 +3058,7 @@ document.getElementById("tcontainer1").addEventListener('click',function(){
         }
     });
 
-//add actuator //
 
-document.getElementById("addactuator").addEventListener('click',function(){
-    document.getElementsByClassName("adddata4")[0].style.display="block";
-})
-
-// cancel actuator type //
-
-function cancelactuatortype(){
-    document.getElementsByClassName("adddata4")[0].style.display="none";
-}
 
 // save actuator type //
 
@@ -1772,8 +3068,28 @@ function saveactuatortype(){
     var actuatordesc = document.getElementsByClassName("actuatordesc")[0].value;
 
     if(actuatorid == "" || actuatorname == ""|| actuatordesc == ""){
-        alert("Fields should not be empty");
-        return;
+         let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        //   html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        });
     }
 
     var formdata = new FormData()
@@ -1788,8 +3104,19 @@ function saveactuatortype(){
     .then(response => response.json())
     .then(data => {
         if(data.status == "success"){
-            alert("Data added");
-            document.getElementsByClassName("adddata4")[0].style.display="none";
+            Swal.fire({
+                title: "Actuator Type Added",
+                // text: "You clicked the button!",
+                icon: "success",
+                draggable: true
+                })
+                .then(()=>{
+                    location.reload();
+                });
+           
+            const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModalactuator')); // Fixed modal ID
+            modal.hide();
+
             const tableBody = document.querySelector(".table6 tbody");
             console.log(tableBody);
             
@@ -1799,16 +3126,25 @@ function saveactuatortype(){
                 <td>${actuatorid}</td>
                 <td>${actuatorname}</td>
                 <td>${actuatordesc}</td>
-                <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_actuator" onclick="editactuatortype(event)" daia-id="{{dataas.actuatorid}}"></td>
-                <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_actuator" onclick="delete_actuatortype(event)" daia-id="{{dataas.actuatorid}}"></td>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalactuatoredit" onclick="editactuatortype(event)" data-id="{{dataas.actuatorid}}" id="actuatoredit">Edit</button></td>
+                <td><button type="button" class="btn btn-danger delete-btnactuator" data-bs-toggle="modal" onclick="delete_actuatortype(event)" data-id="{{dataas.actuatorid}}">Delete</button></td>
             `;
-            tableBody.appendChild(row);
+                tableBody.appendChild(row);
 
         }
-        else{
-            alert("data not added");
+        else {
+            Swal.fire({
+                title: "Error",
+                text: data.message || "Data not added",
+                icon: "error"
+            });
         }
     })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire("Duplicate Entry!");  // Simple error message like in your working code
+    });
+    
 }
 
 // Edit actuator //
@@ -1816,8 +3152,6 @@ var currentactuatorid = null
 function editactuatortype(event){
     var id = event.target.getAttribute("data-id");
     currentactuatorid = id
-
-    document.getElementsByClassName("updateactuator")[0].style.display = "block";
 
     var formdata = new FormData()
     formdata.append('id',id)
@@ -1841,12 +3175,6 @@ function editactuatortype(event){
     })
 }
 
-// cancel updated actuator //
-
-function cancel_updated_actuatortype(){
-    document.getElementsByClassName("updateactuator")[0].style.display = "none";
-
-}
 
 // save updated actuator //
 
@@ -1856,8 +3184,11 @@ function saveupdated_actuator(){
     var updateactuatordesc = document.getElementsByClassName("updateactuatordesc")[0].value;
 
     if(updateactuatorid == "" || updateactuatorname == "" || updateactuatordesc ==""){
-        alert("Fields should not be empty");
-        return;
+        Swal.fire({
+                title: "Valve Size Updated",
+                icon: "success",
+                draggable: true
+                });
     }
      var formdata = new FormData()
      formdata.append("updateactuatorid",updateactuatorid)
@@ -1872,18 +3203,27 @@ function saveupdated_actuator(){
      .then(response => response.json())
      .then(data =>{
         if(data.status == "success"){
-            alert("data updated successfully");
-            document.getElementsByClassName("updateactuator")[0].style.display = "none";
+             Swal.fire({
+                title: "Actuator Type Updated",
+                icon: "success",
+                draggable: true
+                })
+                 .then(()=>{
+                    location.reload();
+                });
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModalactuatoredit'));
+            modal.hide();
 
             const row = document.querySelectorAll(".table6 tbody tr");
             row.forEach(row =>{
                 if(row.getAttribute("data-id")=== currentactuatorid){
                     row.innerHTML = `
-                    <td>${updateactuatorid}</td>
-                    <td>${updateactuatorname}</td>
-                    <td>${updateactuatordesc}</td>
-                    <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_actuator" onclick="editactuatortype(event)" daia-id="{{dataas.actuatorid}}"></td>
-                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_actuator" onclick="delete_actuatortype(event)" daia-id="{{dataas.actuatorid}}"></td>
+                        <td>${updateactuatorid}</td>
+                        <td>${updateactuatorname}</td>
+                        <td>${updateactuatordesc}</td>
+                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalactuatoredit" onclick="editactuatortype(event)" data-id="{{dataas.actuatorid}}" id="actuatoredit">Edit</button></td>
+                        <td><button type="button" class="btn btn-danger delete-btnactuator" data-bs-toggle="modal" onclick="delete_actuatortype(event)" data-id="{{dataas.actuatorid}}">Delete</button></td>
                     `
                 }
             })
@@ -1900,30 +3240,128 @@ function delete_actuatortype(event){
     var id = event.target.getAttribute("data-id")
     
     if(id){
-        if(confirm("Are you sure you want to delete this row?")){
-            var formdata = new FormData()
-            formdata.append('id',id)
+        // Replace the basic confirm with SweetAlert
+        Swal.fire({
+            title: "Are you sure?", 
+            text: "You won't be able to revert this!", 
+            icon: "warning", 
+            showCancelButton: true, 
+            confirmButtonColor: "#3085d6", 
+            cancelButtonColor: "#d33", 
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if(result.isConfirmed){
+                var formdata = new FormData()
+                formdata.append('id', id)
 
-            fetch('/delete_actuator/',{
-                method :"POST",
-                body:formdata
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.status == "success"){
-                    alert("data deleted")
-                    const row = event.target.closest("tr");
-                    if(row){
-                        row.remove();
+                fetch('/delete_actuator/', {
+                    method: "POST",
+                    body: formdata
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status == "success"){
+                        // Replace basic alert with SweetAlert success
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                        
+                        const row = event.target.closest("tr");
+                        if(row){
+                            row.remove();
+                        }
                     }
-
-                }
-                else{
-                    alert("Data not deleted")
-                }
-            })
-        }
+                    else{
+                        // Replace basic alert with SweetAlert error
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Data not deleted",
+                            icon: "error"
+                        });
+                    }
+                })
+                .catch(error => {
+                    // Add error handling
+                    Swal.fire({
+                        title: "Error!",
+                        text: "An error occurred while deleting.",
+                        icon: "error"
+                    });
+                });
+            }
+        });
     }
+}
+
+let currentRowId4 = null;
+let currentRow4 = null;
+
+// Capture the row info when the delete button is clicked
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('delete-btnactuator')) {
+    currentRowId4 = event.target.getAttribute('data-id');
+    currentRow4 = event.target.closest('tr');
+    console.log('Delete button clicked, ID:', currentRowId4, 'Row:', currentRow4);
+  }
+});
+
+// Attach listener to the confirm delete button
+document.addEventListener('DOMContentLoaded', function() {
+  const confirmDeleteBtn4 = document.querySelector('.confirm-delete-btn4');
+  if (confirmDeleteBtn4) {
+    confirmDeleteBtn4.addEventListener('click', async function () {
+      if (currentRowId4 && currentRow4) {
+        try {
+          // Changed URL to match your Django view name
+          const response = await fetch('/delete_actuatortype/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': getCsrfToken()
+            },
+            body: JSON.stringify({ id: currentRowId4 }),
+            credentials: 'include',
+          });
+          
+          const data = await response.json();
+          
+          if (data.status === 'success') {
+            console.log(data.status);
+            currentRow4.remove();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModalactuatordelete'));
+            modal.hide();
+          } else {
+            alert('Failed to delete data: ' + (data.message || 'Unknown error'));
+          }
+        } catch (error) {
+          console.error('Error during deletion:', error);
+          alert('Server error. Please try again.');
+        }
+      } else {
+        alert('No row selected for deletion');
+        console.error('No row selected, currentRowId:', currentRowId4, 'currentRow:', currentRow4);
+      }
+    });
+  } else {
+    console.error('Confirm delete button not found in DOM');
+  }
+});
+
+// Function to get CSRF token from cookies
+function getCsrfToken() {
+  const name = 'csrftoken=';
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(';');
+  
+  for (let i = 0; i < cookieArray.length; i++) {
+    let cookie = cookieArray[i].trim();
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return '';
 }
 
 
@@ -1974,17 +3412,6 @@ document.getElementById("unitcontainer").addEventListener('click',function(){
         }
     });
 
-// add unit //
-
-document.getElementById("addunit").addEventListener('click',function(){
-    document.getElementsByClassName("adddata5")[0].style.display="block";
-})
-
-// cancel unit //
-
-function cancelunit(){
-    document.getElementsByClassName("adddata5")[0].style.display="none";
-}
 
 // save unit //
 
@@ -1994,8 +3421,28 @@ function saveunit(){
     var unitdes = document.getElementsByClassName("unitdes")[0].value;
 
     if(unitid == "" || unitname == ""|| unitdes == ""){
-        alert("Fields should not be empty");
-        return;
+        let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        //   html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        });
     }
 
     var formdata = new FormData()
@@ -2010,8 +3457,19 @@ function saveunit(){
     .then(response => response.json())
     .then(data => {
         if(data.status == "success"){
-            alert("Data added");
-            document.getElementsByClassName("adddata5")[0].style.display="none";
+            Swal.fire({
+                title: "Units Added",
+                // text: "You clicked the button!",
+                icon: "success",
+                draggable: true
+                })
+                .then(()=>{
+                    location.reload()
+                })
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModalunit'));
+            modal.hide();
+
             const tableBody = document.querySelector(".table7 tbody");
             const row = document.createElement("tr");
             row.setAttribute("data-id",data.unitid);
@@ -2019,16 +3477,25 @@ function saveunit(){
                 <td>${unitid}</td>
                 <td>${unitname}</td>
                 <td>${unitdes}</td>
-                <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_unit" onclick="editunittype(event)" data-id = "{{rows.unitid}}"></td>
-                <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_unit" onclick="deleteunittype(event)" data-id = "{{rows.unitid}}"></td>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalunitedit" onclick="editactuatortype(event)" data-id="{{rows.unitid}}">Edit</button></td>
+                <td><button type="button" class="btn btn-danger delete-btnunit" data-bs-toggle="modal" onclick="deleteunittype(event)" data-id="{{rows.unitid}}">Delete</button></td>
             `;
             tableBody.appendChild(row);
 
         }
-        else{
-            alert("data not added");
+        else {
+            Swal.fire({
+                title: "Error",
+                text: data.message || "Data not added",
+                icon: "error"
+            });
         }
     })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire("Duplicate Entry!");  // Simple error message like in your working code
+    });
+    
 }
 
 // edit unit //
@@ -2036,8 +3503,6 @@ var currentunitid = null
 function editunittype(event){
     var id = event.target.getAttribute("data-id");
     currentunitid = id
-
-    document.getElementsByClassName("updateunit")[0].style.display = "block";
 
     var formdata = new FormData()
     formdata.append('id',id)
@@ -2061,12 +3526,6 @@ function editunittype(event){
     })
 }
 
-// cancel updated actuator //
-
-function cancel_updated_unit(){
-    document.getElementsByClassName("updateunit")[0].style.display = "none";
-
-}
 
 // save updated unit //
 
@@ -2076,8 +3535,28 @@ function save_updated_unit(){
     var updateunitdes = document.getElementsByClassName("updateunitdes")[0].value;
 
     if(updateunitid == "" || updateunitname == "" || updateunitdes ==""){
-        alert("Fields should not be empty");
-        return;
+        let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        //   html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        });
     }
      var formdata = new FormData()
      formdata.append("updateunitid",updateunitid)
@@ -2092,8 +3571,18 @@ function save_updated_unit(){
      .then(response => response.json())
      .then(data =>{
         if(data.status == "success"){
-            alert("data updated successfully");
-            document.getElementsByClassName("updateunit")[0].style.display = "none";
+            Swal.fire({
+                title: "Units Updated",
+                // text: "You clicked the button!",
+                icon: "success",
+                draggable: true
+                })
+                 .then(()=>{
+                    location.reload()
+                })
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModaleditunit'));
+            modal.hide();
 
             const row = document.querySelectorAll(".table7 tbody tr");
             row.forEach(row =>{
@@ -2102,8 +3591,8 @@ function save_updated_unit(){
                     <td>${updateunitid}</td>
                     <td>${updateunitname}</td>
                     <td>${updateunitdes}</td>
-                    <td><img src="{% static 'image/editicon.png' %}" alt="" id="Editicon_unit" onclick="editunittype(event)" data-id = "{{rows.unitid}}"></td>
-                    <td><img src="{% static 'image/deleteicon.png' %}" alt="" id="deleteicon_unit" onclick="deleteunittype(event)" data-id = "{{rows.unitid}}"></td>
+                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModaleditunit" onclick="editactuatortype(event)" data-id="{{rows.unitid}}" id="unitbtn">Edit</button></td>
+                    <td><button type="button" class="btn btn-danger delete-btnunit" data-bs-toggle="modal" onclick="deleteunittype(event)" data-id="{{rows.unitid}}">Delete</button></td>
                     `
                 }
             })
@@ -2114,37 +3603,139 @@ function save_updated_unit(){
      })
 }
 
-// delete unit //
+
+// delete unit//
+
 
 function deleteunittype(event){
     var id = event.target.getAttribute("data-id")
     
     if(id){
-        if(confirm("Are you sure you want to delete this row?")){
-            var formdata = new FormData()
-            formdata.append('id',id)
+        // Replace the basic confirm with SweetAlert
+        Swal.fire({
+            title: "Are you sure?", 
+            text: "You won't be able to revert this!", 
+            icon: "warning", 
+            showCancelButton: true, 
+            confirmButtonColor: "#3085d6", 
+            cancelButtonColor: "#d33", 
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if(result.isConfirmed){
+                var formdata = new FormData()
+                formdata.append('id', id)
 
-            fetch('/delete_unit/',{
-                method :"POST",
-                body:formdata
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.status == "success"){
-                    alert("data deleted")
-                    const row = event.target.closest("tr");
-                    if(row){
-                        row.remove();
+                fetch('/delete_unit/', {
+                    method: "POST",
+                    body: formdata
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status == "success"){
+                        // Replace basic alert with SweetAlert success
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                        
+                        const row = event.target.closest("tr");
+                        if(row){
+                            row.remove();
+                        }
                     }
-
-                }
-                else{
-                    alert("Data not deleted")
-                }
-            })
-        }
+                    else{
+                        // Replace basic alert with SweetAlert error
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Data not deleted",
+                            icon: "error"
+                        });
+                    }
+                })
+                .catch(error => {
+                    // Add error handling
+                    Swal.fire({
+                        title: "Error!",
+                        text: "An error occurred while deleting.",
+                        icon: "error"
+                    });
+                });
+            }
+        });
     }
 }
+// delete unit //
+
+let currentRowId5 = null;
+let currentRow5 = null;
+
+// Capture the row info when the delete button is clicked
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('delete-btnunit')) {
+    currentRowId5 = event.target.getAttribute('data-id');
+    currentRow5 = event.target.closest('tr');
+    console.log('Delete button clicked, ID:', currentRowId5, 'Row:', currentRow5);
+  }
+});
+
+// Attach listener to the confirm delete button
+document.addEventListener('DOMContentLoaded', function() {
+  const confirmDeleteBtn5 = document.querySelector('.confirm-delete-btn5');
+  if (confirmDeleteBtn5) {
+    confirmDeleteBtn5.addEventListener('click', async function () {
+      if (currentRowId5 && currentRow5) {
+        try {
+          // Changed URL to match your Django view name
+          const response = await fetch('/delete_unit/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': getCsrfToken()
+            },
+            body: JSON.stringify({ id: currentRowId5 }),
+            credentials: 'include',
+          });
+          
+          const data = await response.json();
+          
+          if (data.status === 'success') {
+            console.log(data.status);
+            currentRow5.remove();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModalunitdelete'));
+            modal.hide();
+          } else {
+            alert('Failed to delete data: ' + (data.message || 'Unknown error'));
+          }
+        } catch (error) {
+          console.error('Error during deletion:', error);
+          alert('Server error. Please try again.');
+        }
+      } else {
+        alert('No row selected for deletion');
+        console.error('No row selected, currentRowId:', currentRowId5, 'currentRow:', currentRow5);
+      }
+    });
+  } else {
+    console.error('Confirm delete button not found in DOM');
+  }
+});
+
+// Function to get CSRF token from cookies
+function getCsrfToken() {
+  const name = 'csrftoken=';
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(';');
+  
+  for (let i = 0; i < cookieArray.length; i++) {
+    let cookie = cookieArray[i].trim();
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return '';
+}
+
 
 // product container //
 
@@ -2257,8 +3848,28 @@ async function adddata() {
     hydroseattestduration == "" || hydroseatallowedleak == "" || airshellleakoption == "" ||
     hydroshellleakoption == "" || bubbleseatleakoption == "" || airseatleakoption == "" || 
     hydroseatleakoption == "") {
-        alert("Please fill in all the fields.");
-        return false;
+        let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        // html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        });
     } else {
         var formdata = new FormData();
         formdata.append("productid", productid);
@@ -2305,7 +3916,12 @@ async function adddata() {
             const result = await response.json();  // Await the response to get the result as JSON
 
             if (result.status === 'success') {
-                alert("Product added successfully");
+                Swal.fire({
+                    title: "PRoduct Added",
+                    // text: "You clicked the button!",
+                    icon: "success",
+                    draggable: true
+                });
                 document.getElementById("addtable").style.display = "none";
 
                 const tableBody = document.querySelector(".table4 tbody");
@@ -2332,20 +3948,20 @@ async function adddata() {
 }
 
 // grid view //
-document.getElementById("gridview").addEventListener('click',function(){
-        var boxcontainer = document.getElementById("boxcontainer");
-        var addtable = document.getElementById("addtable");
-        var tableview = document.getElementsByClassName("tableview")[0];
+// document.getElementById("gridview").addEventListener('click',function(){
+//         var boxcontainer = document.getElementById("boxcontainer");
+//         var addtable = document.getElementById("addtable");
+//         var tableview = document.getElementsByClassName("tableview")[0];
 
-        if(boxcontainer.classList.contains("hidden")){
-            boxcontainer.classList.remove("hidden")
-            addtable.classList.add("hidden")
-            tableview.classList.add("hidden")
-        }
-        else{
-            boxcontainer.classList.add("hidden")
-        }
-    });
+//         if(boxcontainer.classList.contains("hidden")){
+//             boxcontainer.classList.remove("hidden")
+//             addtable.classList.add("hidden")
+//             tableview.classList.add("hidden")
+//         }
+//         else{
+//             boxcontainer.classList.add("hidden")
+//         }
+//     });
 
 // table view //
 
@@ -2469,8 +4085,28 @@ function saveupdated_product() {
         !hydroseatsetpressure || !hydroseatholdingtime || !hydroseattestduration || !hydroseatallowedleak ||
         !airshellleakoption || !hydroshellleakoption || !bubbleseatleakoption || !airseatleakoption || !hydroseatleakoption
     ) {
-        alert("Please fill in all the required fields.");
-        return;
+        let timerInterval;
+        Swal.fire({
+        title: "Fields should not be empty!!",
+        //   html: "I will close in <b></b> milliseconds.",
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+        });
     }
 
     const formdata = new FormData();
@@ -2516,7 +4152,12 @@ function saveupdated_product() {
     .then(response => response.json())
     .then(data => {
         if (data.status === "success") {
-            alert("Data updated successfully!");
+            Swal.fire({
+                title: "Product Updated",
+                // text: "You clicked the button!",
+                icon: "success",
+                draggable: true
+                });
             document.getElementsByClassName("update-table")[0].style.display = "none";
         } else {
             alert("Data update failed: " + data.message);
@@ -2550,7 +4191,12 @@ function deletetable(event){
             .then(response => response.json())
             .then(data => {
                 if(data.status == "success"){
-                    alert("data deleted")
+                    Swal.fire({
+                    title: "Product Deleted",
+                    // text: "You clicked the button!",
+                    icon: "success",
+                    draggable: true
+                });
                     const row = event.target.closest("tr");
                     if(row){
                         row.remove();
@@ -2564,6 +4210,34 @@ function deletetable(event){
         }
     }
 }
+
+// active class //
+ 
+function navigateTo(page) {
+    localStorage.setItem('activeTab', page);
+    window.location.href = page; 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const activeTab = localStorage.getItem('activeTab');
+    console.log(activeTab,'activeTab');
+    
+    if (activeTab) {
+        document.querySelectorAll('ul li').forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        const activeTabId = activeTab.split('/').pop(); 
+        const activeTabElement = document.getElementById(activeTabId);
+        if (activeTabElement) {
+            activeTabElement.classList.add('active');
+            activeTabElement.style.background="linear-gradient(90deg,rgba(217, 217, 217, 1) 0%, rgba(54, 52, 52, 1) 100%);";
+            activeTabElement.style.color="white";
+            activeTabElement.querySelector('img').style.backgroundColor = "#F78F25";
+        }
+    }
+});
+
 
     </script>
 </body>

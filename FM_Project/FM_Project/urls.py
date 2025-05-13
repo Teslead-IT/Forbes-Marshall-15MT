@@ -77,7 +77,7 @@ urlpatterns = [
     path('edit_data/<int:id>/',views.edit_data),
     path('update/',views.update),
     
-    path('resourcemgntnew/',views.resourcemgntnew),
+    path('resourcemgnt/',views.resourcemgnt),
     path('savevalvedata/',views.savevalvedata),
     path('deletedata/',views.deletedata),
     path('get_data_for_edit/',views.get_data_for_edit),

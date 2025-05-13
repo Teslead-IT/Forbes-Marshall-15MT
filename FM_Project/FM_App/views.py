@@ -1,7 +1,7 @@
 from pyexpat.errors import messages
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,JsonResponse
-from django.db import connection
+from django.db import connection,IntegrityError
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password 
@@ -696,22 +696,7 @@ def update_flang_type(request):
         return JsonResponse({'status': 'failure', 'message': 'Invalid request'})
     
 
-@csrf_exempt
-def delete_flangtype(request):
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            flagid = data.get('id')
-            
-            # Delete from the database
-            with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM valve_flanged WHERE flanged_type_id = %s", [flagid])
-            
-            return JsonResponse({'status': 'success', 'message': 'flanged type deleted successfully'})
-        except Exception as e:
-            return JsonResponse({'status': 'failure', 'message': str(e)})
-    
-    return JsonResponse({'status': 'failure', 'message': 'Invalid request'})
+
 #  Edit flang type
 
 def get_flang_type(request, flagid):
@@ -755,14 +740,14 @@ def update_flang_type(request):
 def delete_flangtype(request):
     if request.method == 'POST':
         try:
-            data = json.loads(request.body)
-            flagid = data.get('flagid')
+            flagid = request.POST.get('id')
 
+            if(flagid):
             # Delete from the database
-            with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM valve_flanged WHERE flanged_type_id = %s", [flagid])
+                with connection.cursor() as cursor:
+                    cursor.execute("DELETE FROM valve_flanged WHERE flanged_type_id = %s", [flagid])
 
-            return JsonResponse({'status': 'success', 'message': 'flanged type deleted successfully'})
+                return JsonResponse({'status': 'success', 'message': 'flanged type deleted successfully'})
         except Exception as e:
             return JsonResponse({'status': 'failure', 'message': str(e)})
 
@@ -1347,7 +1332,7 @@ def update(request):
     return JsonResponse({"status": "failure", "message": "Invalid method"})
 
 @csrf_exempt
-def resourcemgntnew(request):
+def resourcemgnt(request):
     with connection.cursor() as cursor:
         cursor.execute("select * from valve_size")
         newvalue = cursor.fetchall()
@@ -1505,12 +1490,35 @@ def save_classtype(request):
         typeid = request.POST.get("typeid")
         typename = request.POST.get("typename")
         typedesc = request.POST.get("typedesc")
+
+       
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO valve_type (valve_type_id, valve_type_name, valve_type_description)
+                VALUES (%s, %s, %s)
+            """, [typeid, typename, typedesc])
+            return JsonResponse({"status": "success"})
+        
+
+    return JsonResponse({"status": "failure"})
+
+@csrf_exempt
+def save_valveclass(request):
+    if request.method == "POST":
+        classid = request.POST.get("classid")
+        classname = request.POST.get("classname")
+        classdesc = request.POST.get("classdesc")
+
         
         with connection.cursor() as cursor:
-            cursor.execute("insert into valve_type (valve_type_id,valve_type_name,valve_type_description) values (%s,%s,%s)",[typeid,typename,typedesc])
-            
-        return JsonResponse({"status":"success"})
-    return JsonResponse({"status":"failure"})
+            cursor.execute("""
+                INSERT INTO valve_class (valve_class_id, valve_class_name, valve_class_description)
+                VALUES (%s, %s, %s)
+            """, [classid, classname, classdesc])
+        return JsonResponse({"status": "success"})
+        
+              
+    return JsonResponse({"status": "failure"})
 
 @csrf_exempt
 def get_update_classtype(request):
@@ -1559,17 +1567,17 @@ def delete_valvetype(request):
     return JsonResponse({"status":"failure"})
 
 
-@csrf_exempt
-def save_valveclass(request):
-    if request.method == "POST":
-        classid = request.POST.get("classid")
-        classname = request.POST.get("classname")
-        classdes = request.POST.get("classdes")
+# @csrf_exempt
+# def save_valveclass(request):
+#     if request.method == "POST":
+#         classid = request.POST.get("classid")
+#         classname = request.POST.get("classname")
+#         classdes = request.POST.get("classdes")
         
-        with connection.cursor() as cursor:
-            cursor.execute("insert into valve_class (valve_class_id,valve_class_name,valve_class_description) values(%s,%s,%s)",[classid,classname,classdes])
-        return JsonResponse({"status":"success"})      
-    return JsonResponse({"status":"failure"})      
+#         with connection.cursor() as cursor:
+#             cursor.execute("insert into valve_class (valve_class_id,valve_class_name,valve_class_description) values(%s,%s,%s)",[classid,classname,classdes])
+#         return JsonResponse({"status":"success"})      
+#     return JsonResponse({"status":"failure"})      
 
 @csrf_exempt
 def fetch_classdata(request):
